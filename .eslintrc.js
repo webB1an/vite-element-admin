@@ -2,12 +2,15 @@ module.exports = {
   root: true,
   globals: {
     defineEmits: 'readonly',
-    defineProps: 'readonly'
+    defineProps: 'readonly',
+    defineExpose: 'readonly',
+    withDefaults: 'readonly',
+    defineOptions: 'readonly'
   },
   extends: [
     'plugin:@typescript-eslint/recommended',
     'plugin:vue/vue3-recommended',
-    'airbnb-base'      
+    'airbnb-base'
   ],
   parser: 'vue-eslint-parser',
   plugins: [
@@ -86,7 +89,7 @@ module.exports = {
       singleline: {
         max: 3,
         allowFirstLine: true
-      },      
+      },
       multiline: {
         max: 1,
         allowFirstLine: false

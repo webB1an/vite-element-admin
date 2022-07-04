@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc --noEmit && vite build --mode staging",
+    "build": "vue-tsc --noEmit && vite build --mode staging --max_old_space_size=4096",
     "preview": "vite preview",
     "prepare": "husky install"
   },

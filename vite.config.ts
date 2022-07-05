@@ -41,31 +41,31 @@ export default ({ mode }) => {
         '@': resolve(__dirname, 'src')
       },
       extensions: ['.js', '.ts', '.jsx', '.tsx', '.json']
-    }
-    // build: {
-    //   brotliSize: false,
-    //   target: 'esnext',
-    //   minify: 'esbuild',
-    //   rollupOptions: {
-    //     output: {
-    //       manualChunks: (id) => {
-    //         if (id.includes('element-plus')) {
-    //           return 'element-plus'
-    //         }
-    //         if (id.includes('vue-router')) {
-    //           return 'vue-router'
-    //         }
-    //         if (id.includes('vuex')) {
-    //           return 'vuex'
-    //         }
-    //         if (id.includes('lodash-es')) {
-    //           return 'lodash-es'
-    //         }
+    },
+    build: {
+      brotliSize: false,
+      target: 'esnext',
+      minify: 'esbuild',
+      rollupOptions: {
+        output: {
+          manualChunks: (id) => {
+            if (id.includes('element-plus')) {
+              return 'element-plus'
+            }
+            if (id.includes('vue-router')) {
+              return 'vue-router'
+            }
+            if (id.includes('vuex')) {
+              return 'vuex'
+            }
+            if (id.includes('lodash-es')) {
+              return 'lodash-es'
+            }
 
-    //         return 'vendor'
-    //       }
-    //     }
-    //   }
-    // }
+            return 'vendor'
+          }
+        }
+      }
+    }
   })
 }

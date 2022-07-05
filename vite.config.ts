@@ -43,6 +43,10 @@ export default ({ mode }) => {
       extensions: ['.js', '.ts', '.jsx', '.tsx', '.json']
     },
     build: {
+      // sourcemap: true,
+      brotliSize: false,
+      target: 'esnext',
+      minify: 'esbuild',
       rollupOptions: {
         output: {
           manualChunks: (id) => {

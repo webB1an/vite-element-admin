@@ -21,6 +21,7 @@ import Hamburger from './Hamburger.vue'
 @import "@/style/variable.scss";
 
 .navbar-container {
+  background-color: #fff;
   height: $navbarHeight;
 }
 </style>

@@ -26,6 +26,7 @@ const hideSiderbar = computed(() => !appStore.siderbar.active)
 .app-warpper {
   width: 100%;
   height: 100%;
+  background-color: #e9ebf0;
 
   .main-container {
     margin-left: $sideWidth;

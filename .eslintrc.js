@@ -79,6 +79,7 @@ module.exports = {
     '@typescript-eslint/no-empty-function': 'off',
     'no-empty': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
+    '@typescript-eslint/no-unused-vars': 'off',
     'guard-for-in': 'off',
     '@typescript-eslint/ban-types': 'off',
     'class-methods-use-this': 'off',

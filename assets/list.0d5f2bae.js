@@ -1,1 +1,0 @@
-import{b as n,z as a,r,o as c,f as l,k as _,w as i,F as p,h as t}from"./vendor.423ab923.js";const u=t(" list "),d=t("click to detil"),b=n({setup(m){const e=a(),o=()=>e.push("/todo/detail");return(f,h)=>{const s=r("el-button");return c(),l(p,null,[u,_(s,{type:"primary",onClick:o},{default:i(()=>[d]),_:1})],64)}}});export{b as default};

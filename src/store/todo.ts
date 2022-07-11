@@ -40,6 +40,7 @@ export default defineStore('todo', {
     },
     delTodo(index: number) {
       this.todoList.splice(index, 1)
+      this.todoList = [...this.todoList]
       CookiesSet('todoList', JSON.stringify(this.todoList))
     }
   }

@@ -8,6 +8,6 @@
 .app-main {
   margin: 10px;
   padding: 10px;
-  background-color: #fff;
+  // background-color: #fff;
 }
 </style>

@@ -29,6 +29,7 @@ const hideSiderbar = computed(() => !appStore.siderbar.active)
   background-color: #e9ebf0;
 
   .main-container {
+    background-color: #e9ebf0;
     margin-left: $sideWidth;
     transition: margin-left $sideTransitionTime;
   }

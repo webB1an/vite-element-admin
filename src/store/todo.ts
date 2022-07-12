@@ -11,11 +11,15 @@ export interface ITodo {
 
 export default defineStore('todo', {
   state: () => ({
-    todoList: JSON.parse(CookiesGet('todoList')) as ITodo[]
+    todoList: JSON.parse(CookiesGet('todoList') || '[]') as ITodo[],
+    all: Number(CookiesGet('todo-all')), // 总计
+    over: Number(CookiesGet('todo-over')), // 完成
+    del: Number(CookiesGet('todo-del')) // 删除
   }),
   getters: {
     completed: (state) => state.todoList.filter(todo => todo.completed),
     incomplete: (state) => state.todoList.filter(todo => !todo.completed)
+
   },
   actions: {
     addTodo(description: string) {
@@ -27,6 +31,8 @@ export default defineStore('todo', {
         description
       }
       this.todoList = [newTodo, ...this.todoList]
+      this.all += 1
+      CookiesSet('todo-all', String(this.all))
       CookiesSet('todoList', JSON.stringify(this.todoList))
     },
     doTodo(id: string) {
@@ -36,11 +42,15 @@ export default defineStore('todo', {
         }
         return todo
       })
+      this.over += 1
+      CookiesSet('todo-over', String(this.over))
       CookiesSet('todoList', JSON.stringify(this.todoList))
     },
     delTodo(index: number) {
       this.todoList.splice(index, 1)
       this.todoList = [...this.todoList]
+      this.del += 1
+      CookiesSet('todo-del', String(this.del))
       CookiesSet('todoList', JSON.stringify(this.todoList))
     }
   }

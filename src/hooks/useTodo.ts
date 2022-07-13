@@ -17,16 +17,16 @@ export default function () {
   const store = todoStore()
   const { todoList, completed, incomplete } = storeToRefs(store)
 
-  const addTodo = (description: string) => {
+  const addTodo = (description: string): void => {
     store.addTodo(description)
     todo.value = ''
   }
 
-  const doTodo = (id: string) => store.doTodo(id)
+  const doTodo = (id: string): void => store.doTodo(id)
 
-  const delTodo = (index: number) => store.delTodo(index)
+  const delTodo = (index: number): void => store.delTodo(index)
 
-  const seeDifferentTodo = (type: TodoType) => {
+  const seeDifferentTodo = (type: TodoType): void => {
     switch (type) {
       case TodoType.all:
         list.value = todoList.value

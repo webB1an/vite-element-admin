@@ -5,7 +5,7 @@
       class="el-icon"
       :name="`svg-${route.meta?.icon}`"
     />
-    <template #title>{{ route.meta?.name }}</template>
+    <template #title>{{ route.meta?.title }}</template>
   </el-menu-item>
 </template>
 

@@ -9,20 +9,27 @@ export interface ITodo {
   description: string
 }
 
+interface TodoState {
+  todoList: ITodo[],
+  all: number,
+  over: number,
+  del: number
+}
+
 export default defineStore('todo', {
-  state: () => ({
-    todoList: JSON.parse(CookiesGet('todoList') || '[]') as ITodo[],
+  state: (): TodoState => ({
+    todoList: JSON.parse(CookiesGet('todoList') || '[]'),
     all: Number(CookiesGet('todo-all')), // 总计
     over: Number(CookiesGet('todo-over')), // 完成
     del: Number(CookiesGet('todo-del')) // 删除
   }),
   getters: {
-    completed: (state) => state.todoList.filter(todo => todo.completed),
-    incomplete: (state) => state.todoList.filter(todo => !todo.completed)
+    completed: (state): ITodo[] => state.todoList.filter(todo => todo.completed),
+    incomplete: (state): ITodo[] => state.todoList.filter(todo => !todo.completed)
 
   },
   actions: {
-    addTodo(description: string) {
+    addTodo(description: string): void {
       if (!description) return
       if (this.todoList.some(todo => todo.description === description)) return
       const newTodo: ITodo = {
@@ -35,7 +42,7 @@ export default defineStore('todo', {
       CookiesSet('todo-all', String(this.all))
       CookiesSet('todoList', JSON.stringify(this.todoList))
     },
-    doTodo(id: string) {
+    doTodo(id: string): void {
       this.todoList = this.todoList.map(todo => {
         if (todo.id === id) {
           todo.completed = !todo.completed
@@ -46,7 +53,7 @@ export default defineStore('todo', {
       CookiesSet('todo-over', String(this.over))
       CookiesSet('todoList', JSON.stringify(this.todoList))
     },
-    delTodo(index: number) {
+    delTodo(index: number): void {
       this.todoList.splice(index, 1)
       this.todoList = [...this.todoList]
       this.del += 1

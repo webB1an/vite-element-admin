@@ -21,47 +21,75 @@ export const asyncRoutes: RouterConfig[] = [
     children: [
       {
         path: 'index',
+        name: 'DashBoard',
         component: DashBoard,
-        meta: { icon: 'dashboard', name: 'DashBoard' }
+        meta: { icon: 'dashboard', title: '首页' }
       }
     ]
-  }, {
-    path: '/todo',
+  },
+  {
+    path: '/documentation',
     component: Layout,
-    redirect: '/todo/list',
-    meta: { icon: 'todo', name: 'Todo' },
+    redirect: '/documentation/index',
     children: [
       {
-        path: 'list',
-        // hidden: true,
-        component: () => import('@/views/todo/list.vue'),
-        meta: { icon: 'todo', name: 'List' }
-      }, {
-        path: 'detail',
-        // hidden: true,
-        component: () => import('@/views/todo/detail.vue'),
-        meta: { name: 'Detail' }
-      }, {
-        path: 'nest',
-        redirect: '/todo/nest/list',
-        meta: { name: 'nest' },
-        component: Layout,
-        children: [
-          {
-            path: 'list',
-            // hidden: true,
-            component: () => import('@/views/todo/list.vue'),
-            meta: { icon: 'todo', name: 'List' }
-          }, {
-            path: 'detail',
-            // hidden: true,
-            component: () => import('@/views/todo/detail.vue'),
-            meta: { name: 'Detail' }
-          }
-        ]
+        path: 'index',
+        name: 'Documentation',
+        component: () => import('@/views/documentation/index.vue'),
+        meta: { icon: 'documentation', title: '文档' }
+      }
+    ]
+  },
+  {
+    path: '/icon',
+    component: Layout,
+    redirect: '/icon/index',
+    children: [
+      {
+        path: 'index',
+        name: 'Icon',
+        component: () => import('@/views/icon/index.vue'),
+        meta: { icon: 'icon', title: '图标' }
       }
     ]
   }
+  // {
+  //   path: '/todo',
+  //   component: Layout,
+  //   redirect: '/todo/list',
+  //   meta: { icon: 'todo', name: 'Todo' },
+  //   children: [
+  //     {
+  //       path: 'list',
+  //       // hidden: true,
+  //       component: () => import('@/views/todo/list.vue'),
+  //       meta: { icon: 'todo', name: 'List' }
+  //     }, {
+  //       path: 'detail',
+  //       // hidden: true,
+  //       component: () => import('@/views/todo/detail.vue'),
+  //       meta: { name: 'Detail' }
+  //     }, {
+  //       path: 'nest',
+  //       redirect: '/todo/nest/list',
+  //       meta: { name: 'nest' },
+  //       component: Layout,
+  //       children: [
+  //         {
+  //           path: 'list',
+  //           // hidden: true,
+  //           component: () => import('@/views/todo/list.vue'),
+  //           meta: { icon: 'todo', name: 'List' }
+  //         }, {
+  //           path: 'detail',
+  //           // hidden: true,
+  //           component: () => import('@/views/todo/detail.vue'),
+  //           meta: { name: 'Detail' }
+  //         }
+  //       ]
+  //     }
+  //   ]
+  // }
 ]
 
 const router = createRouter({

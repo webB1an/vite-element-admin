@@ -55,7 +55,11 @@
           <el-table-column prop="num" label="数量" />
           <el-table-column label="状态">
             <template #default="scope">
-              <el-tag :type="scope.row.status">{{ scope.row.status }}</el-tag>
+              <el-tag
+                :type="scope.row.status === 'success' ? scope.row.status : 'warning'"
+              >
+                {{ scope.row.status }}
+              </el-tag>
             </template>
           </el-table-column>
         </el-table>

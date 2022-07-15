@@ -1,1 +1,0 @@
-import{b as s,r,o as a,c as i,w as p,h as c}from"./vendor.d9524ff6.js";const l=c(" Github Repository "),u=s({setup(m){const o=t=>window.open(t);return(t,e)=>{const n=r("el-button");return a(),i(n,{type:"primary",size:"large",onClick:e[0]||(e[0]=_=>o("https://github.com/webB1an/vite-element-admin"))},{default:p(()=>[l]),_:1})}}});export{u as default};

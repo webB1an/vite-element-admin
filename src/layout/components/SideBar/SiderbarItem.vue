@@ -19,7 +19,7 @@
       <el-sub-menu :index="route.path">
         <template #title>
           <svg-icon svg-class="el-icon" :name="`svg-${route.meta?.icon}`" />
-          <span>{{ route.meta?.name }}</span>
+          <span>{{ route.meta?.title }}</span>
         </template>
         <template v-for="item in route.children">
           <Item

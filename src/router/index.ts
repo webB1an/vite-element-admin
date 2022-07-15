@@ -52,6 +52,27 @@ export const asyncRoutes: RouterConfig[] = [
         meta: { icon: 'icon', title: '图标' }
       }
     ]
+  },
+  {
+    path: '/components',
+    // name: 'Components',
+    component: Layout,
+    redirect: '/components/tinymce',
+    meta: { icon: 'icon', title: '富文本编辑器' },
+    children: [
+      {
+        path: 'tinymce',
+        name: 'Tinymce',
+        component: () => import('@/views/components/tinymce.vue'),
+        meta: { title: '富文本编辑器' }
+      },
+      {
+        path: 'icon',
+        name: 'Icon1',
+        component: () => import('@/views/icon/index.vue'),
+        meta: { title: '图标' }
+      }
+    ]
   }
   // {
   //   path: '/todo',

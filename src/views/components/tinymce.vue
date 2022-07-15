@@ -8,6 +8,7 @@
   />
   <!-- <Tinymce v-model="content" /> -->
   <el-card class="rich-text mt20">
+    <!-- eslint-disable-next-line vue/no-v-html -->
     <div v-html="content"></div>
   </el-card>
 </template>

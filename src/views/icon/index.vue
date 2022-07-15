@@ -28,7 +28,6 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
 
-console.log(import.meta.globEager('../../icons/svg/**.svg'))
 const icons = ref<string[]>([])
 
 Object
@@ -41,11 +40,11 @@ const geTooltipContent = (icon: string): string => `<svg-icon name="svg-${icon}"
 <style scoped lang="scss">
 .icons-wapper {
   cursor: pointer;
-  padding-top: 10px;
+  padding-top: 20px;
   text-align: center;
 
   .icons {
-    font-size: 40px;
+    font-size: 26px;
   }
 
   svg {

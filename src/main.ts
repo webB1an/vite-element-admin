@@ -9,6 +9,7 @@ import router from './router'
 import store from './store'
 
 import '@/style/reset.css'
+import 'normalize.css/normalize.css'
 import 'element-plus/dist/index.css'
 
 import SvgIcon from '@/components/SvgIcon.vue'

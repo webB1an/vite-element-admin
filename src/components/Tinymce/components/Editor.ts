@@ -11,7 +11,8 @@ import { getTinymce } from '../TinyMCE'
 import { isTextarea, mergePlugins, uuid, isNullOrUndefined, initEditor } from '../Utils'
 import { editorProps, IPropTypes } from './EditorPropTypes'
 import { h, defineComponent, onMounted, ref, Ref, toRefs, nextTick, watch, onBeforeUnmount, onActivated, onDeactivated } from 'vue'
-import { Editor as TinyMCEEditor, EditorEvent, TinyMCE } from 'tinymce'
+// import { Editor as TinyMCEEditor, EditorEvent, TinyMCE } from 'tinymce'
+import { TinyMCE, EditorEvent, Editor as TinyMCEEditor } from 'public/tinymce/tinymce'
 
 type EditorOptions = Parameters<TinyMCE['init']>[0];
 
@@ -90,9 +91,11 @@ export const Editor = defineComponent({
       } else if (element.value && element.value.ownerDocument) {
         const channel = props.cloudChannel ? props.cloudChannel : '6'
         const apiKey = props.apiKey ? props.apiKey : 'no-api-key'
+
         const scriptSrc: string = isNullOrUndefined(props.tinymceScriptSrc)
           ? `https://cdn.tiny.cloud/1/${apiKey}/tinymce/${channel}/tinymce.min.js`
           : props.tinymceScriptSrc
+
         ScriptLoader.load(
           element.value.ownerDocument,
           scriptSrc,

@@ -63,7 +63,7 @@ export const asyncRoutes: RouterConfig[] = [
       {
         path: 'tinymce',
         name: 'Tinymce',
-        component: () => import('@/views/components/tinymce.vue'),
+        component: () => import('@/views/components/tinymce/index.vue'),
         meta: { title: '富文本编辑器' }
       },
       {

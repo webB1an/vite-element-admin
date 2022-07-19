@@ -11,8 +11,8 @@ import { getTinymce } from '../TinyMCE'
 import { isTextarea, mergePlugins, uuid, isNullOrUndefined, initEditor } from '../Utils'
 import { editorProps, IPropTypes } from './EditorPropTypes'
 import { h, defineComponent, onMounted, ref, Ref, toRefs, nextTick, watch, onBeforeUnmount, onActivated, onDeactivated } from 'vue'
-// import { Editor as TinyMCEEditor, EditorEvent, TinyMCE } from 'tinymce'
-import { TinyMCE, EditorEvent, Editor as TinyMCEEditor } from 'public/tinymce/tinymce'
+import { Editor as TinyMCEEditor, EditorEvent, TinyMCE } from 'tinymce'
+// import { TinyMCE, EditorEvent, Editor as TinyMCEEditor } from 'public/tinymce/tinymce'
 
 type EditorOptions = Parameters<TinyMCE['init']>[0];
 

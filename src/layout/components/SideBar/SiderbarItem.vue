@@ -18,7 +18,7 @@
     <template v-else>
       <el-sub-menu :index="route.path">
         <template #title>
-          <svg-icon svg-class="el-icon" :name="`svg-${route.meta?.icon}`" />
+          <svg-icon v-if="route.meta?.icon" svg-class="el-icon" :name="`svg-${route.meta?.icon}`" />
           <span>{{ route.meta?.title }}</span>
         </template>
         <template v-for="item in route.children">

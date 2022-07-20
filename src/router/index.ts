@@ -58,7 +58,7 @@ export const asyncRoutes: RouterConfig[] = [
     // name: 'Components',
     component: Layout,
     redirect: '/components/tinymce',
-    meta: { icon: 'icon', title: '富文本编辑器' },
+    meta: { icon: 'component', title: '组件' },
     children: [
       {
         path: 'tinymce',
@@ -67,10 +67,57 @@ export const asyncRoutes: RouterConfig[] = [
         meta: { title: '富文本编辑器' }
       },
       {
-        path: 'icon',
-        name: 'Icon1',
-        component: () => import('@/views/icon/index.vue'),
-        meta: { title: '图标' }
+        path: 'markdown',
+        name: 'Markdown',
+        component: () => import('@/views/components/markdown.vue'),
+        meta: { title: 'Markdown' }
+      }
+    ]
+  },
+  {
+    path: '/nested',
+    component: Layout,
+    meta: { icon: 'nested', title: '嵌套' },
+    children: [
+      {
+        path: 'menu1',
+        name: 'menu1',
+        component: () => import('@/views/nested/menu1/index.vue'),
+        meta: { title: '菜单 1' }
+      },
+      {
+        path: 'menu2',
+        name: 'menu2',
+        component: () => import('@/views/nested/menu2/index.vue'),
+        meta: { title: '菜单 2' },
+        children: [
+          {
+            path: 'menu2-1',
+            name: 'menu2-1',
+            component: () => import('@/views/nested/menu2/menu2-1/index.vue'),
+            meta: { title: '菜单 2-1' }
+          },
+          {
+            path: 'menu2-2',
+            name: 'menu2-2',
+            component: () => import('@/views/nested/menu2/menu2-2/index.vue'),
+            meta: { title: '菜单 2-2' },
+            children: [
+              {
+                path: 'menu2-2-1',
+                name: 'menu2-2-1',
+                component: () => import('@/views/nested/menu2/menu2-2/menu2-2-1/index.vue'),
+                meta: { title: '菜单 2-2-1' }
+              },
+              {
+                path: 'menu2-2-2',
+                name: 'menu2-2-2',
+                component: () => import('@/views/nested/menu2/menu2-2/menu2-2-2/index.vue'),
+                meta: { title: '菜单 2-2-2' }
+              }
+            ]
+          }
+        ]
       }
     ]
   }

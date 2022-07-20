@@ -120,6 +120,25 @@ export const asyncRoutes: RouterConfig[] = [
         ]
       }
     ]
+  },
+  {
+    path: '/table',
+    component: Layout,
+    meta: { icon: 'table', title: 'Table' },
+    children: [
+      {
+        path: 'dynamic-table',
+        name: 'DynamicTable',
+        component: () => import('@/views/table/dynamic-table/index.vue'),
+        meta: { title: '动态 Table' }
+      },
+      {
+        path: 'drag-table',
+        name: 'DragTable',
+        component: () => import('@/views/table/drag-table.vue'),
+        meta: { title: '拖拽 Table' }
+      }
+    ]
   }
   // {
   //   path: '/todo',

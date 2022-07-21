@@ -3,11 +3,7 @@
     <el-col :span="6">
       <el-card>
         <template #header>
-          <el-input
-            v-model="todo"
-            placeholder="Todo List"
-            @keydown.enter="addTodo(todo)"
-          />
+          <el-input v-model="todo" placeholder="Todo List" @keydown.enter="addTodo(todo)" />
         </template>
         <ul class="todo-list">
           <el-scrollbar height="200px">
@@ -15,13 +11,10 @@
               v-for="(item, index) in list"
               :key="item.id"
               class="todo-list-item"
-              :class="{'checked': item.completed}"
+              :class="{ checked: item.completed }"
               @click="doTodo(item.id)"
             >
-              <div
-                :class="{'radio-checked': item.completed}"
-                class="todo-list-item-radio"
-              ></div>
+              <div :class="{ 'radio-checked': item.completed }" class="todo-list-item-radio"></div>
               <span class="todo-list-item-des">{{ item.description }}</span>
               <span class="todo-list-item-close" @click.stop="delTodo(index)">✕</span>
             </li>
@@ -29,10 +22,7 @@
         </ul>
         <div class="todo-bottom">
           {{ incomplete.length }} 条未完成
-          <el-check-tag
-            :checked="active === TodoType.all"
-            @click="seeDifferentTodo(TodoType.all)"
-          >
+          <el-check-tag :checked="active === TodoType.all" @click="seeDifferentTodo(TodoType.all)">
             所有
           </el-check-tag>
           <el-check-tag

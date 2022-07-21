@@ -1,17 +1,6 @@
 <template>
-  <el-table
-    ref="dragTable"
-    :data="tableData"
-    row-key="id"
-    border
-    style="width: 100%;"
-  >
-    <el-table-column
-      align="center"
-      prop="id"
-      label="id"
-      width="50"
-    />
+  <el-table ref="dragTable" :data="tableData" row-key="id" border style="width: 100%">
+    <el-table-column align="center" prop="id" label="id" width="50" />
     <el-table-column align="center" prop="date" label="date" />
     <el-table-column align="center" prop="content" label="content" />
     <el-table-column align="center" prop="star" label="star">
@@ -23,7 +12,7 @@
   </el-table>
 </template>
 
-<script lang='ts' setup>
+<script lang="ts" setup>
 import type { ElTable } from 'element-plus'
 import { ref, onMounted } from 'vue'
 import Sortable from 'sortablejs'
@@ -80,12 +69,11 @@ onMounted(() => {
     }
   })
 })
-
 </script>
 
-<style lang='scss'>
+<style lang="scss">
 .sortable-ghost {
-  opacity: .8;
+  opacity: 0.8;
   color: #fff !important;
   background: #42b983 !important;
 }

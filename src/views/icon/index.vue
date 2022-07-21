@@ -1,22 +1,14 @@
 <template>
   <el-card>
     <el-row>
-      <el-col
-        v-for="icon in icons"
-        :key="icon"
-        class="icons-wapper"
-        :span="4"
-      >
+      <el-col v-for="icon in icons" :key="icon" class="icons-wapper" :span="4">
         <el-tooltip
           class="box-item"
           effect="dark"
           :content="geTooltipContent(icon)"
           placement="top"
         >
-          <svg-icon
-            class="icons"
-            :name="`svg-${icon}`"
-          />
+          <svg-icon class="icons" :name="`svg-${icon}`" />
         </el-tooltip>
 
         <div class="title">{{ icon }}</div>
@@ -30,9 +22,9 @@ import { ref } from 'vue'
 
 const icons = ref<string[]>([])
 
-Object
-.keys(import.meta.globEager('../../icons/svg/**.svg'))
-.map(item => icons.value.push(item.replace(/.+svg\/|.svg/g, '')))
+Object.keys(import.meta.globEager('../../icons/svg/**.svg')).map((item) =>
+  icons.value.push(item.replace(/.+svg\/|.svg/g, ''))
+)
 
 const geTooltipContent = (icon: string): string => `<svg-icon name="svg-${icon}" />`
 </script>

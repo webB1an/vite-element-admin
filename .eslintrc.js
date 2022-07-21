@@ -1,36 +1,30 @@
 module.exports = {
   root: true,
-  globals: {
-    defineEmits: 'readonly',
-    defineProps: 'readonly',
-    defineExpose: 'readonly',
-    withDefaults: 'readonly',
-    defineOptions: 'readonly'
+  env: {
+    browser: true,
+    node: true,
+    es6: true
   },
-  extends: [
-    'plugin:@typescript-eslint/recommended',
-    'plugin:vue/vue3-recommended',
-    'airbnb-base'
-  ],
   parser: 'vue-eslint-parser',
-  plugins: [
-    '@typescript-eslint'
-  ],
   parserOptions: {
     parser: '@typescript-eslint/parser',
-    ecmaVersion: 2020
+    ecmaVersion: 2020,
+    sourceType: 'module',
+    jsxPragma: 'React',
+    ecmaFeatures: {
+      jsx: true
+    }
   },
+  extends: [
+    'plugin:vue/vue3-recommended',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:prettier/recommended'
+  ],
   rules: {
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-bitwise': 'off',
     'no-tabs': 'off',
-    'array-element-newline': ['error', 'consistent'],
-    indent: ['error', 2, { MemberExpression: 0, SwitchCase: 1, ignoredNodes: ['TemplateLiteral'] }],
-    quotes: ['error', 'single'],
-    // 数组和对象键值对最后一个逗号， never参数：不能带末尾的逗号, always参数：必须带末尾的逗号
-    // always-multiline：多行模式必须带逗号，单行模式不能带逗号
-    'comma-dangle': ['error', 'never'],
     'object-curly-spacing': ['error', 'always'],
     'max-len': ['error', 520],
     'no-new': 'off',
@@ -41,8 +35,6 @@ module.exports = {
     'no-unused-vars': 'off',
     'import/no-cycle': 'off',
     'arrow-parens': 'off',
-    semi: ['error', 'never'],
-    eqeqeq: 'off',
     'no-param-reassign': 'off',
     'import/prefer-default-export': 'off',
     'no-use-before-define': 'off',
@@ -74,28 +66,59 @@ module.exports = {
     'import/no-unresolved': 'off',
     'no-case-declarations': 'off',
     'template-curly-spacing': 'off',
+    'no-empty': 'off',
     'vue/valid-v-for': 'off',
+    'vue/script-setup-uses-vars': 'error',
+    '@typescript-eslint/ban-ts-ignore': 'off',
+    '@typescript-eslint/explicit-function-return-type': 'off',
+    '@typescript-eslint/no-explicit-any': 'off',
     '@typescript-eslint/no-var-requires': 'off',
     '@typescript-eslint/no-empty-function': 'off',
-    'no-empty': 'off',
-    '@typescript-eslint/no-explicit-any': 'off',
-    '@typescript-eslint/no-unused-vars': ['error', { vars: 'all', args: 'after-used', ignoreRestSiblings: true }],
-    'guard-for-in': 'off',
+    'vue/custom-event-name-casing': 'off',
+    'no-use-before-define': 'off',
+    '@typescript-eslint/no-use-before-define': 'off',
+    '@typescript-eslint/ban-ts-comment': 'off',
     '@typescript-eslint/ban-types': 'off',
-    'class-methods-use-this': 'off',
-    'no-return-await': 'off',
+    '@typescript-eslint/no-non-null-assertion': 'off',
+    '@typescript-eslint/explicit-module-boundary-types': 'off',
+    '@typescript-eslint/no-unused-vars': [
+      'error',
+      {
+        argsIgnorePattern: '^_',
+        varsIgnorePattern: '^_'
+      }
+    ],
+    'no-unused-vars': [
+      'error',
+      {
+        argsIgnorePattern: '^_',
+        varsIgnorePattern: '^_'
+      }
+    ],
+    'space-before-function-paren': 'off',
     'vue/html-indent': ['error', 2],
     'vue/html-self-closing': 'off',
-    'vue/max-attributes-per-line': ['warn', {
-      singleline: {
-        max: 3,
-        allowFirstLine: true
-      },
-      multiline: {
-        max: 1,
-        allowFirstLine: false
+    'vue/attributes-order': 'off',
+    'vue/one-component-per-file': 'off',
+    'vue/html-closing-bracket-newline': 'off',
+    'vue/multiline-html-element-content-newline': 'off',
+    'vue/singleline-html-element-content-newline': 'off',
+    'vue/attribute-hyphenation': 'off',
+    'vue/require-default-prop': 'off',
+    'vue/require-explicit-emits': 'off',
+    'vue/html-self-closing': [
+      'error',
+      {
+        html: {
+          void: 'always',
+          normal: 'never',
+          component: 'always'
+        },
+        svg: 'always',
+        math: 'always'
       }
-    }],
+    ],
+    'vue/multi-word-component-names': 'off',
     'vue/singleline-html-element-content-newline': 'off'
   }
 }

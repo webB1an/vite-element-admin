@@ -1,11 +1,7 @@
 <template>
-  <el-alert title="menu2-1" type="error" :closable="false">
-  </el-alert>
+  <el-alert title="menu2-1" type="error" :closable="false" />
 </template>
 
-<script lang='ts' setup>
+<script lang="ts" setup></script>
 
-</script>
-
-<style lang='scss' scoped>
-</style>
+<style lang="scss" scoped></style>

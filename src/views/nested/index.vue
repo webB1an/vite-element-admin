@@ -1,8 +1,6 @@
-<template>
-  1
-</template>
+<template> 1 </template>
 
-<script lang='ts' setup>
+<script lang="ts" setup>
 import { useRoute } from 'vue-router'
 
 const route = useRoute()
@@ -10,5 +8,4 @@ const route = useRoute()
 console.log(route.matched)
 </script>
 
-<style lang='scss' scoped>
-</style>
+<style lang="scss" scoped></style>

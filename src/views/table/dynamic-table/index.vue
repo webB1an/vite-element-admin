@@ -9,10 +9,9 @@
   </el-tabs>
 </template>
 
-<script lang='ts' setup>
+<script lang="ts" setup>
 import FixedThead from './components/FixedThead.vue'
 import UnfixedThead from './components/UnfixedThead.vue'
 </script>
 
-<style lang='scss' scoped>
-</style>
+<style lang="scss" scoped></style>

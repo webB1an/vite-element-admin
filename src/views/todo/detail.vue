@@ -1,3 +1,1 @@
-<template>
-  detail
-</template>
+<template> detail </template>

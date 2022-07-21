@@ -1,5 +1,8 @@
 <template>
-  <div class="app-warpper" :class="{'open-siderbar': openSiderbar, 'hide-siderbar': hideSiderbar}">
+  <div
+    class="app-warpper"
+    :class="{ 'open-siderbar': openSiderbar, 'hide-siderbar': hideSiderbar }"
+  >
     <side-bar />
     <div class="main-container">
       <navbar />
@@ -21,7 +24,7 @@ const hideSiderbar = computed(() => !appStore.siderbar.active)
 </script>
 
 <style lang="scss">
-@import "@/style/variable.scss";
+@import '@/style/variable.scss';
 
 .app-warpper {
   width: 100%;

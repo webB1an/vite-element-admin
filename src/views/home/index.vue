@@ -1,11 +1,11 @@
 <template>
   count: {{ stateCount }}
-  <br>
+  <br />
   double: {{ stateGetterDouble }}
-  <br>
+  <br />
   <button @click="testMutationAdd">testMutationAdd</button>
   <button @click="testMutationSub">testMutationSub</button>
-  <br>
+  <br />
   <button @click="TestActionCommit">TestActionCommit</button>
   <button @click="TestActionDispatch">TestActionDispatch</button>
 </template>
@@ -18,7 +18,6 @@ import { useStore } from 'vuex'
 
 // 使用 store
 const store = useStore()
-const a = 4
 // mutation
 const testMutationAdd = () => store.commit('ADD')
 const testMutationSub = () => store.commit('SUB')

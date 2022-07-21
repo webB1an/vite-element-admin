@@ -55,9 +55,7 @@
           <el-table-column prop="num" label="数量" />
           <el-table-column label="状态">
             <template #default="scope">
-              <el-tag
-                :type="scope.row.status === 'success' ? scope.row.status : 'warning'"
-              >
+              <el-tag :type="scope.row.status === 'success' ? scope.row.status : 'warning'">
                 {{ scope.row.status }}
               </el-tag>
             </template>
@@ -77,15 +75,16 @@ import todoStore from '@/store/todo'
 import Todo from '@/components/Todo/index.vue'
 
 interface IOrder {
-  orderNo: string,
-  num: number,
+  orderNo: string
+  num: number
   status: 'success' | 'pending'
 }
 
 const todoInstance = todoStore()
 const { all, incomplete, over, del } = storeToRefs(todoInstance)
 
-const random = (max: number, min: number) : number => Math.floor(Math.random() * (max - min + 1) + min)
+const random = (max: number, min: number): number =>
+  Math.floor(Math.random() * (max - min + 1) + min)
 
 const orders: IOrder[] = []
 

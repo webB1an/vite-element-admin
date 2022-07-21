@@ -3,24 +3,19 @@
     <el-checkbox v-for="opt in opts" :key="opt" :label="opt" />
   </el-checkbox-group>
 
-  <el-table
-    :data="tableData"
-    border
-    class="mt20"
-    style="width: 100%;"
-  >
+  <el-table :data="tableData" border class="mt20" style="width: 100%">
     <el-table-column prop="name" label="fruit" />
     <el-table-column v-for="item in checkBoxVal" :prop="item" :label="item" />
   </el-table>
 </template>
 
-<script lang='ts' setup>
+<script lang="ts" setup>
 import { ref } from 'vue'
 
 interface ITable {
-  name: string,
-  apple: string,
-  banana: string,
+  name: string
+  apple: string
+  banana: string
   orange: string
 }
 
@@ -45,5 +40,4 @@ const tableData: ITable[] = [
 const checkBoxVal = ref<string[]>(defaultThead)
 </script>
 
-<style lang='scss' scoped>
-</style>
+<style lang="scss" scoped></style>

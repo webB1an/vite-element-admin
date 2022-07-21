@@ -1,17 +1,6 @@
 <template>
-  <el-table
-    ref="dragTable"
-    :data="tableData"
-    row-key="id"
-    border
-    style="width: 100%;"
-  >
-    <el-table-column
-      align="center"
-      prop="id"
-      label="id"
-      width="50"
-    />
+  <el-table ref="dragTable" :data="tableData" row-key="id" border style="width: 100%">
+    <el-table-column align="center" prop="id" label="id" width="50" />
     <el-table-column align="center" prop="date" label="date" />
     <el-table-column align="center" prop="content" label="content" />
     <el-table-column align="center" prop="star" label="star">
@@ -28,14 +17,14 @@
   </el-table>
 </template>
 
-<script lang='ts' setup>
+<script lang="ts" setup>
 import { ref } from 'vue'
 
-      interface ITable {
-  id: number,
-  date: string,
-  content: string,
-  star: number,
+interface ITable {
+  id: number
+  date: string
+  content: string
+  star: number
   reading: number
 }
 
@@ -75,5 +64,4 @@ const editor = (row: ITable) => {
 }
 </script>
 
-<style lang='scss' scoped>
-</style>
+<style lang="scss" scoped></style>

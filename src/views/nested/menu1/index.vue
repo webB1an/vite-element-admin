@@ -2,9 +2,6 @@
   <el-alert title="menu1" type="info" :closable="false" />
 </template>
 
-<script lang='ts' setup>
+<script lang="ts" setup></script>
 
-</script>
-
-<style lang='scss' scoped>
-</style>
+<style lang="scss" scoped></style>

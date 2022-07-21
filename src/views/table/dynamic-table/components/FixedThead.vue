@@ -3,25 +3,19 @@
     <el-checkbox v-for="opt in opts" :key="opt" :label="opt" />
   </el-checkbox-group>
 
-  <el-table
-    :key="key"
-    :data="tableData"
-    border
-    class="mt20"
-    style="width: 100%;"
-  >
+  <el-table :key="key" :data="tableData" border class="mt20" style="width: 100%">
     <el-table-column prop="name" label="fruit" />
     <el-table-column v-for="item in fixedThead" :prop="item" :label="item" />
   </el-table>
 </template>
 
-<script lang='ts' setup>
+<script lang="ts" setup>
 import { ref, watch } from 'vue'
 
 interface ITable {
-  name: string,
-  apple: string,
-  banana: string,
+  name: string
+  apple: string
+  banana: string
   orange: string
 }
 
@@ -48,10 +42,9 @@ const fixedThead = ref<string[]>(defaultThead)
 const key = ref(1)
 
 watch(checkBoxVal, () => {
-  fixedThead.value = opts.filter(item => checkBoxVal.value.includes(item))
+  fixedThead.value = opts.filter((item) => checkBoxVal.value.includes(item))
   key.value += 1
 })
 </script>
 
-<style lang='scss' scoped>
-</style>
+<style lang="scss" scoped></style>

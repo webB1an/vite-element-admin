@@ -137,6 +137,12 @@ export const asyncRoutes: RouterConfig[] = [
         name: 'DragTable',
         component: () => import('@/views/table/drag-table.vue'),
         meta: { title: '拖拽 Table' }
+      },
+      {
+        path: 'inline-edit-table',
+        name: 'InlineEditTable',
+        component: () => import('@/views/table/inline-edit-table.vue'),
+        meta: { title: 'Table 内编辑' }
       }
     ]
   }

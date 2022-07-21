@@ -1,1 +1,0 @@
-import{r as e,o as r,c as s,w as c,k as n}from"./vendor.25a7e868.js";import{_ as a}from"./index.992e984b.js";const _={};function l(i,f){const o=e("router-view"),t=e("el-alert");return r(),s(t,{title:"menu2-2",type:"success",closable:!1},{default:c(()=>[n(o)]),_:1})}var d=a(_,[["render",l]]);export{d as default};

@@ -96,7 +96,7 @@ module.exports = {
       }
     ],
     'space-before-function-paren': 'off',
-    'vue/html-indent': ['error', 2],
+    // 'vue/html-indent': ['error', 2],
     'vue/html-self-closing': 'off',
     'vue/attributes-order': 'off',
     'vue/one-component-per-file': 'off',
@@ -106,6 +106,16 @@ module.exports = {
     'vue/attribute-hyphenation': 'off',
     'vue/require-default-prop': 'off',
     'vue/require-explicit-emits': 'off',
+    // 'vue/max-attributes-per-line': [
+    //   2,
+    //   {
+    //     singleline: 10,
+    //     multiline: {
+    //       max: 1,
+    //       allowFirstLine: false
+    //     }
+    //   }
+    // ],
     'vue/html-self-closing': [
       'error',
       {

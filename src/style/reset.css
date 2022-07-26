@@ -20,3 +20,11 @@ ul {
 .mb20 {
   margin-bottom: 20px;
 }
+
+.fl {
+  float: left;
+}
+
+.fr {
+  float: right;
+}

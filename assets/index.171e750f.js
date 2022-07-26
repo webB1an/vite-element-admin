@@ -1,0 +1,1 @@
+import{b as s,r,o as a,c as i,w as p,h as c}from"./vendor.c7731fdd.js";const d=c(" Github Repository "),u=s({setup(l){const o=t=>window.open(t);return(t,e)=>{const n=r("el-button");return a(),i(n,{type:"primary",size:"large",onClick:e[0]||(e[0]=m=>o("https://github.com/webB1an/vite-element-admin"))},{default:p(()=>[d]),_:1})}}});export{u as default};

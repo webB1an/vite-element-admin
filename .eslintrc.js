@@ -83,17 +83,7 @@ module.exports = {
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/no-unused-vars': [
       'error',
-      {
-        argsIgnorePattern: '^_',
-        varsIgnorePattern: '^_'
-      }
-    ],
-    'no-unused-vars': [
-      'error',
-      {
-        argsIgnorePattern: '^_',
-        varsIgnorePattern: '^_'
-      }
+      { vars: 'all', args: 'after-used', ignoreRestSiblings: true }
     ],
     'space-before-function-paren': 'off',
     // 'vue/html-indent': ['error', 2],

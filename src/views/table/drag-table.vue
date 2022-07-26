@@ -16,8 +16,9 @@
 import type { ElTable } from 'element-plus'
 import { ref, onMounted } from 'vue'
 import Sortable from 'sortablejs'
+import type { NormalTableData } from './typing'
 
-const tableData = ref([
+const tableData = ref<NormalTableData[]>([
   {
     id: 1,
     date: '2022-07-20 15:36:20',

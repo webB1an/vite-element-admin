@@ -143,6 +143,12 @@ export const asyncRoutes: RouterConfig[] = [
         name: 'InlineEditTable',
         component: () => import('@/views/table/inline-edit-table.vue'),
         meta: { title: 'Table 内编辑' }
+      },
+      {
+        path: 'complex-table',
+        name: 'ComplexTable',
+        component: () => import('@/views/table/complex-table/index.vue'),
+        meta: { title: '综合 Table' }
       }
     ]
   }

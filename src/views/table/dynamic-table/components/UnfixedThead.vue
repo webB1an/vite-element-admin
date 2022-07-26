@@ -11,18 +11,12 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue'
-
-interface ITable {
-  name: string
-  apple: string
-  banana: string
-  orange: string
-}
+import type { FruitTableData } from '../../typing'
 
 const opts: string[] = ['apple', 'banana', 'orange']
 const defaultThead: string[] = ['apple']
 
-const tableData: ITable[] = [
+const tableData: FruitTableData[] = [
   {
     name: 'fruit-1',
     apple: 'apple-10',

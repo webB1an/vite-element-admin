@@ -9,4 +9,5 @@ module.exports = {
   proseWrap: 'preserve',
   htmlWhitespaceSensitivity: 'strict',
   endOfLine: 'auto'
+  // singleAttributePerLine: true
 }

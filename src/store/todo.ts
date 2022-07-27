@@ -4,15 +4,15 @@ import { nanoid } from 'nanoid'
 import { CookiesGet, CookiesSet } from '@/utils/cookie'
 
 export interface ITodo {
-  id: string,
-  completed: boolean,
+  id: string
+  completed: boolean
   description: string
 }
 
 interface TodoState {
-  todoList: ITodo[],
-  all: number,
-  over: number,
+  todoList: ITodo[]
+  all: number
+  over: number
   del: number
 }
 
@@ -24,14 +24,13 @@ export default defineStore('todo', {
     del: Number(CookiesGet('todo-del')) // 删除
   }),
   getters: {
-    completed: (state): ITodo[] => state.todoList.filter(todo => todo.completed),
-    incomplete: (state): ITodo[] => state.todoList.filter(todo => !todo.completed)
-
+    completed: (state): ITodo[] => state.todoList.filter((todo) => todo.completed),
+    incomplete: (state): ITodo[] => state.todoList.filter((todo) => !todo.completed)
   },
   actions: {
     addTodo(description: string): void {
       if (!description) return
-      if (this.todoList.some(todo => todo.description === description)) return
+      if (this.todoList.some((todo) => todo.description === description)) return
       const newTodo: ITodo = {
         id: nanoid(),
         completed: false,
@@ -43,7 +42,7 @@ export default defineStore('todo', {
       CookiesSet('todoList', JSON.stringify(this.todoList))
     },
     doTodo(id: string): void {
-      this.todoList = this.todoList.map(todo => {
+      this.todoList = this.todoList.map((todo) => {
         if (todo.id === id) {
           todo.completed = !todo.completed
         }

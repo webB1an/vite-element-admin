@@ -2,7 +2,6 @@
   <div class="sidebar-container">
     <el-scrollbar>
       <el-menu
-        :show-timeout="200"
         :default-active="$route.path"
         :collapse="isCollapse"
         unique-opened
@@ -10,6 +9,7 @@
         background-color="#30354d"
         text-color="#9699a5"
         active-text-color="#fff"
+        :collapse-transition="false"
         router
       >
         <siderbar-item

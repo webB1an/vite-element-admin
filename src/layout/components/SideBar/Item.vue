@@ -1,10 +1,6 @@
 <template>
   <el-menu-item :index="url">
-    <svg-icon
-      v-if="route.meta?.icon"
-      class="el-icon"
-      :name="`svg-${route.meta?.icon}`"
-    />
+    <svg-icon v-if="route.meta?.icon" class="el-icon" :name="`svg-${route.meta?.icon}`" />
     <template #title>{{ route.meta?.title }}</template>
   </el-menu-item>
 </template>
@@ -14,10 +10,10 @@ import { RouteRecordRaw } from 'vue-router'
 // import path from 'path-browserify'
 
 interface Props {
-  url: string,
+  url: string
   route: RouteRecordRaw
 }
 
-const props = defineProps<Props>()
+defineProps<Props>()
 // const resolve = (url: string): string => path.resolve(props.baseUrl, url)
 </script>

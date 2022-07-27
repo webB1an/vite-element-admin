@@ -12,7 +12,6 @@
     border-right: none;
 
     .el-menu-item {
-      padding: 0;
 
       .el-menu-tooltip__trigger {
         justify-content: center;
@@ -31,7 +30,7 @@
       }
 
       .el-sub-menu__title {
-        padding: 0;
+        // padding: 0;
       }
 
       .el-sub-menu__title:hover {
@@ -45,6 +44,10 @@
           background-color: $menuBg;
         }
       }
+    }
+
+    .el-menu-item,.el-sub-menu__title {
+      padding-left: 20px;
     }
   }
 }

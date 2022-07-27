@@ -9,10 +9,7 @@
         />
         <span>{{ onlyOneChild.meta?.name }}</span>
       </el-menu-item> -->
-      <Item
-        :route="onlyOneChild"
-        :url="resolve(onlyOneChild.path)"
-      />
+      <Item :route="onlyOneChild" :url="resolve(onlyOneChild.path)" />
     </template>
 
     <template v-else>
@@ -28,12 +25,7 @@
             :route="item"
             :url="resolve(item.path)"
           />
-          <siderbar-item
-            v-else
-            :key="item.path"
-            :route="item"
-            :base-url="resolve(item.path)"
-          />
+          <siderbar-item v-else :key="item.path" :route="item" :base-url="resolve(item.path)" />
         </template>
       </el-sub-menu>
     </template>
@@ -49,11 +41,10 @@ import SvgIcon from '@/components/SvgIcon.vue'
 import Item from './Item.vue'
 
 interface Props {
-  baseUrl: string,
+  baseUrl: string
   route: RouteRecordRaw
 }
-const props = withDefaults(defineProps<Props>(), {
-})
+const props = withDefaults(defineProps<Props>(), {})
 
 // defineOptions({
 //   name: 'SiderbarItem'
@@ -62,7 +53,7 @@ const props = withDefaults(defineProps<Props>(), {
 const onlyOneChild = ref({} as RouteRecordRaw)
 
 const hasOnlyOneVisibleChild = (children: RouteRecordRaw[], route: RouteRecordRaw): boolean => {
-  const visibleChildren = children.filter(item => {
+  const visibleChildren = children.filter((item) => {
     if (item.hidden) {
       return false
     }

@@ -48,7 +48,6 @@ const hideSiderbar = computed(() => !appStore.siderbar.active)
 .hide-siderbar {
   .sidebar-container {
     width: $sideCollapseWidth;
-    transition: width $sideTransitionTime;
 
     .el-menu {
       width: $sideCollapseWidth;
@@ -65,7 +64,6 @@ const hideSiderbar = computed(() => !appStore.siderbar.active)
 
   .main-container {
     margin-left: $sideCollapseWidth;
-    transition: margin-left $sideTransitionTime;
   }
 }
 </style>

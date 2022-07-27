@@ -151,6 +151,20 @@ export const asyncRoutes: RouterConfig[] = [
         meta: { title: '综合 Table' }
       }
     ]
+  },
+  {
+    path: '/tabs',
+    // name: 'Components',
+    component: Layout,
+    redirect: '/components/index',
+    children: [
+      {
+        path: 'index',
+        name: 'tabs',
+        component: () => import('@/views/tabs/index.vue'),
+        meta: { icon: 'tabs', title: 'Tab' }
+      }
+    ]
   }
   // {
   //   path: '/todo',

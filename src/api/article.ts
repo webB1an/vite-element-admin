@@ -20,10 +20,17 @@ export function updateItem(query: Article) {
   })
 }
 
-export function addItems(query: any) {
+export function addItem(query: any) {
   return fetch<ArticleFetchModel>({
     url: '/users',
     method: 'post',
     data: query
+  })
+}
+
+export function deleteItem(id: string | number) {
+  return fetch<ArticleFetchModel>({
+    url: `/users/${id}`,
+    method: 'delete'
   })
 }

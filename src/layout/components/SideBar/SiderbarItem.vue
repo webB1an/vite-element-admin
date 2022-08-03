@@ -1,14 +1,6 @@
 <template>
   <template v-if="!route.hidden && route.children">
     <template v-if="hasOnlyOneVisibleChild(route.children, route)">
-      <!-- <el-menu-item :index="resolve(onlyOneChild.path)">
-        <svg-icon
-          v-if="onlyOneChild.meta?.icon"
-          class="el-icon"
-          :name="`svg-${onlyOneChild.meta?.icon}`"
-        />
-        <span>{{ onlyOneChild.meta?.name }}</span>
-      </el-menu-item> -->
       <Item :route="onlyOneChild" :url="resolve(onlyOneChild.path)" />
     </template>
 
@@ -45,10 +37,6 @@ interface Props {
   route: RouteRecordRaw
 }
 const props = withDefaults(defineProps<Props>(), {})
-
-// defineOptions({
-//   name: 'SiderbarItem'
-// })
 
 const onlyOneChild = ref({} as RouteRecordRaw)
 

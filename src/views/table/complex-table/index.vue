@@ -47,9 +47,9 @@
         <el-avatar :src="scope.row.avatar" />
       </template>
     </el-table-column>
-    <el-table-column align="center" prop="name" label="name" width="160" />
+    <el-table-column align="center" prop="name" label="name" />
 
-    <el-table-column align="center" prop="account" label="account" width="400" />
+    <el-table-column align="center" prop="account" label="account" />
     <el-table-column align="center" prop="phone" label="phone" />
     <el-table-column width="250" align="center" prop="email" label="email" />
     <el-table-column align="center" prop="city" label="city" />
@@ -59,11 +59,12 @@
         <el-tag v-if="scope.row.status === true" type="success" effect="light"> 正常 </el-tag>
       </template>
     </el-table-column>
-    <el-table-column width="100" align="center" label="action">
+    <el-table-column width="200" align="center" label="action">
       <template #default="scope">
         <el-button type="primary" @click="editorTableRow(scope.row, EDialogType.editor)">
           编辑
         </el-button>
+        <el-button type="danger" @click="deleteTableRow(scope.row.id)"> 删除 </el-button>
       </template>
     </el-table-column>
   </el-table>
@@ -125,7 +126,7 @@ import type { Article } from '@/api/models/articleModel'
 import { EDialogType } from '../typing'
 
 // api
-import { getList, updateItem, addItems } from '@/api/article'
+import { getList, updateItem, addItem, deleteItem } from '@/api/article'
 
 import { formatParams } from '@/utils/formatParams'
 
@@ -177,6 +178,23 @@ const resetSearch = () => {
   searchForm()
 }
 
+const deleteTableRow = async (id: string | number) => {
+  const res = await deleteItem(id)
+
+  if (res.code !== '90001')
+    return ElMessage({
+      message: res.msg,
+      type: 'error'
+    })
+
+  ElMessage({
+    message: res.msg,
+    type: 'success'
+  })
+
+  fetchList()
+}
+
 const handlePageChange = () => {
   fetchList()
 }
@@ -187,7 +205,7 @@ const confirmEditorDialog = () =>
     if (dialogType.value === EDialogType.editor) {
       res = await updateItem(dialogForm)
     } else {
-      res = await addItems(formatParams(dialogForm))
+      res = await addItem(formatParams(dialogForm))
     }
 
     if (res.code !== '90001')

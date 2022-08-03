@@ -13,9 +13,10 @@
 </template>
 
 <script lang="ts" setup>
-import type { ElTable } from 'element-plus'
 import { ref, onMounted } from 'vue'
 import Sortable from 'sortablejs'
+
+import type { ElTable } from 'element-plus'
 import type { NormalTableData } from './typing'
 
 const tableData = ref<NormalTableData[]>([

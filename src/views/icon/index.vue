@@ -1,5 +1,7 @@
 <template>
-  <el-card>
+  <el-alert title="使用 import.meta.globEager 实现" type="success" :closable="false" />
+
+  <el-card class="mt20">
     <el-row>
       <el-col v-for="icon in icons" :key="icon" class="icons-wapper" :span="4">
         <el-tooltip

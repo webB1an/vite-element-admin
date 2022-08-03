@@ -1,74 +1,71 @@
-import { ref, reactive, Ref } from 'vue'
+import { ref, reactive, computed } from 'vue'
 import type { FormInstance, FormRules } from 'element-plus'
 
-import type { NormalTableData } from '../typing'
+// typing
+import type { Article } from '@/api/models/articleModel'
+import { EDialogType } from '../typing'
 
-export default function (
-  tableData: Ref<NormalTableData[]>,
-  originTableData: Ref<NormalTableData[]>
-) {
-  const dialogFormRef = ref<FormInstance>()
+import { emptyObjKeys } from '@/utils/formatParams'
+
+const defaultDialogForm = {
+  id: '',
+  createdAt: '',
+  name: '',
+  avatar: '',
+  phone: '',
+  city: '',
+  account: '',
+  email: '',
+  status: ''
+}
+
+export default function () {
   const dialogFormVisible = ref(false)
-  const dialogForm = reactive<NormalTableData>({
-    id: 0,
-    date: '',
-    originCtn: '',
-    content: '',
-    star: 0,
-    reading: 0,
-    editor: false
+  const dialogType = ref(EDialogType.add)
+  const dialogFormRef = ref<FormInstance>()
+  const dialogForm = reactive<Article>(defaultDialogForm)
+
+  const dialogTitle = computed(() => {
+    return dialogType.value === EDialogType.add ? '添加' : '编辑'
   })
 
   const dialogFormRules = reactive<FormRules>({
-    date: [
-      {
-        type: 'date',
-        required: true,
-        message: 'Please pick a date',
-        trigger: 'change'
-      }
-    ],
-    content: [{ required: true, message: '请输入内容', trigger: 'blur' }],
-    star: [
-      {
-        type: 'number',
-        required: true,
-        message: '请选择星级',
-        trigger: 'change'
-      }
-    ],
-    reading: [{ required: true, message: '请输入阅读数', trigger: 'blur' }]
+    name: [{ required: true, message: '请输入 name', trigger: 'blur' }],
+    account: [{ required: true, message: '请输入 account', trigger: 'blur' }],
+    phone: [{ required: true, message: '请输入 phone', trigger: 'blur' }],
+    email: [{ type: 'email', required: true, message: '请输入 email', trigger: 'blur' }],
+    city: [{ required: true, message: '请输入 city', trigger: 'blur' }],
+    status: [{ required: true, message: '请选择 status', trigger: 'change' }]
   })
 
-  const editorTableRow = (row: NormalTableData): void => {
-    Object.assign(dialogForm, row)
+  const editorTableRow = (row: Article | any, type: EDialogType): void => {
+    dialogType.value = type
+
+    if (type === EDialogType.add) {
+      emptyObjKeys(dialogForm)
+      dialogForm.status = true
+    } else {
+      Object.assign(dialogForm, row)
+    }
+    dialogFormRef.value?.clearValidate()
     dialogFormVisible.value = true
   }
 
-  const confirmEditorDialogForm = async (formEl: FormInstance | undefined) => {
+  const confirmEditorDialogForm = async (formEl: FormInstance | undefined, cb: any) => {
     if (!formEl) return
-    await formEl.validate((valid) => {
+    await formEl.validate(async (valid) => {
       if (valid) {
-        tableData.value = tableData.value.map((row) => {
-          if (row.id === dialogForm.id) {
-            row = { ...dialogForm }
-          }
-          return row
-        })
-        originTableData.value = originTableData.value.map((row) => {
-          if (row.id === dialogForm.id) {
-            row = { ...dialogForm }
-          }
-          return row
-        })
+        await cb()
         dialogFormVisible.value = false
       }
     })
   }
 
   return {
+    dialogType,
     dialogFormRef,
     dialogFormVisible,
+    dialogTitle,
     dialogForm,
     dialogFormRules,
     editorTableRow,

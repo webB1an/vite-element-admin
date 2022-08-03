@@ -1,67 +1,32 @@
-import { ref, reactive, Ref } from 'vue'
+import { ref, reactive } from 'vue'
 import type { FormInstance, FormRules } from 'element-plus'
 
-import type { NormalTableData, FilterForm, StarObj, StarOpt } from '../typing'
-import { StarEnum } from '../typing'
+import type { Article } from '@/api/models/articleModel'
 
-export default function (
-  tableData: Ref<NormalTableData[]>,
-  originTableData: Ref<NormalTableData[]>
-) {
-  const starOpts = ref<StarOpt[]>(getStarOpts(StarEnum))
-
-  const filterForm = reactive<FilterForm>({
-    content: '',
-    star: ''
+export default function () {
+  const filterForm = reactive<Pick<Article, 'name' | 'account' | 'status'>>({
+    name: '',
+    account: '',
+    status: ''
   })
 
   const filterFormRef = ref<FormInstance>()
 
-  const filterFormRules = reactive<FormRules>({
-    content: [{ required: true, message: '请输入要搜索内容', trigger: 'blur' }],
-    star: [
-      {
-        required: true,
-        message: '请选择星级',
-        trigger: 'change'
-      }
-    ]
-  })
+  const filterFormRules = reactive<FormRules>({})
 
-  const search = async (formEl: FormInstance | undefined) => {
+  const search = async (formEl: FormInstance | undefined, cb: any) => {
     if (!formEl) return
     await formEl.validate((valid) => {
       if (valid) {
-        tableData.value = originTableData.value
-        if (filterForm.content === '' && filterForm.star === '') return
-
-        tableData.value = tableData.value.filter(
-          (row) => row.content === filterForm.content || row.star === filterForm.star
-        )
+        cb()
       }
     })
   }
 
   return {
-    starOpts,
     filterForm,
     filterFormRef,
     filterFormRules,
     search
   }
-}
-
-function getStarOpts(star: StarObj): StarOpt[] {
-  const arr: StarOpt[] = []
-  for (const key in star) {
-    const starKey: any = key
-
-    if (isNaN(starKey)) {
-      arr.push({
-        label: starKey,
-        value: star[starKey]
-      })
-    }
-  }
-  return arr
 }

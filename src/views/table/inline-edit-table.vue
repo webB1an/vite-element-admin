@@ -1,15 +1,34 @@
 <template>
-  <el-table ref="inlineEditTable" :data="tableData" row-key="id" border style="width: 100%">
+  <el-table
+    ref="inlineEditTable"
+    :data="tableData"
+    v-loading="loading"
+    row-key="id"
+    border
+    style="width: 100%"
+  >
     <el-table-column align="center" prop="id" label="id" width="50" />
-    <el-table-column align="center" prop="date" label="date" />
-    <el-table-column align="center" prop="content" label="content" width="400">
+    <el-table-column
+      class-name="avatar-column"
+      align="center"
+      prop="avatar"
+      label="avatar"
+      width="70"
+    >
+      <template #default="scope">
+        <el-avatar :src="scope.row.avatar" />
+      </template>
+    </el-table-column>
+    <el-table-column align="center" prop="name" label="name" />
+
+    <el-table-column align="center" prop="account" label="account" width="400">
       <template #default="scope">
         <span v-if="!scope.row.editor">
-          {{ scope.row.content }}
+          {{ scope.row.account }}
         </span>
         <el-row justify="space-around" v-else>
           <el-col :span="16">
-            <el-input v-model="scope.row.content" />
+            <el-input v-model="scope.row.account" />
           </el-col>
           <el-col :span="4">
             <el-button class="fr" type="primary" @click="cancelEditor(scope.row)"> 取消 </el-button>
@@ -17,12 +36,9 @@
         </el-row>
       </template>
     </el-table-column>
-    <el-table-column align="center" prop="star" label="star">
-      <template #default="scope">
-        <el-rate v-model="scope.row.star" disabled />
-      </template>
-    </el-table-column>
-    <el-table-column align="center" prop="reading" label="reading" />
+    <el-table-column align="center" prop="phone" label="phone" />
+    <el-table-column width="250" align="center" prop="email" label="email" />
+    <el-table-column align="center" prop="city" label="city" />
     <el-table-column width="100" align="center" label="action">
       <template #default="scope">
         <el-button v-if="!scope.row.editor" type="primary" @click="editor(scope.row)">
@@ -32,59 +48,60 @@
       </template>
     </el-table-column>
   </el-table>
+
+  <Pagination
+    class="mt20"
+    v-if="total > 0"
+    v-model:page="query.page"
+    v-model:limit="query.limit"
+    :total="total"
+    @pagination="handlePageChange"
+  />
 </template>
 
 <script lang="ts" setup>
 import { ref } from 'vue'
 import { ElMessage } from 'element-plus'
+import Pagination from '@/components/Pagination/index.vue'
 
-import type { NormalTableData } from './typing'
+// hook
+import usePagination from '@/hooks/usePagination'
 
-const tableData = ref<NormalTableData[]>([
-  {
-    id: 1,
-    date: '2022-07-20 15:36:20',
-    originCtn: 'Cddsfdfdada',
-    content: 'Cddsfdfdada',
-    star: 3,
-    reading: 1233
-  },
-  {
-    id: 2,
-    date: '2022-07-20 15:36:20',
-    originCtn: 'BfdfFfdgf',
-    content: 'BfdfFfdgf',
-    star: 5,
-    reading: 2030
-  },
-  {
-    id: 3,
-    date: '2022-07-20 15:36:20',
-    originCtn: 'Asdfsdffds',
-    content: 'Asdfsdffds',
-    star: 2,
-    reading: 4566
-  },
-  {
-    id: 4,
-    date: '2022-07-20 15:36:20',
-    originCtn: 'Asdfsdffds',
-    content: 'Asdfsdffds',
-    star: 2,
-    reading: 4566
-  }
-])
+// typing
+import type { Article } from '@/api/models/articleModel'
 
-const editor = (row: NormalTableData) => {
-  row.editor = !row.editor
-}
-const confirmEditor = (row: NormalTableData) => {
+// api
+import { getList, updateItem } from '@/api/article'
+
+const { total, query } = usePagination()
+
+const loading = ref(false)
+
+const tableData = ref<Article[]>([])
+
+const editor = (row: Article) => {
   row.editor = !row.editor
 }
 
-const cancelEditor = (row: NormalTableData) => {
-  if (row.originCtn) {
-    row.content = row.originCtn
+const confirmEditor = async (row: Article) => {
+  row.editor = !row.editor
+  delete row.editor
+  const res = await updateItem(row)
+  if (res.code !== '90001')
+    return ElMessage({
+      message: res.msg,
+      type: 'error'
+    })
+
+  ElMessage({
+    message: res.msg,
+    type: 'success'
+  })
+}
+
+const cancelEditor = (row: Article) => {
+  if (row.originAccount) {
+    row.account = row.originAccount
   }
   row.editor = false
   ElMessage({
@@ -92,11 +109,27 @@ const cancelEditor = (row: NormalTableData) => {
     type: 'warning'
   })
 }
+
+const fetchList = async () => {
+  loading.value = true
+  const res = await getList({ ...query })
+  tableData.value = res.data.list
+  total.value = res.data.total
+  loading.value = false
+}
+
+const handlePageChange = () => {
+  fetchList()
+}
+
+fetchList()
 </script>
 
 <style lang="scss">
-.el-rate__item {
-  display: flex;
-  align-items: center;
+.avatar-column .cell {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  line-height: 100%;
 }
 </style>

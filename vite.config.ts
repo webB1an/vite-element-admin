@@ -8,14 +8,16 @@ import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 export default ({ mode }) => {
   const env = loadEnv(mode, resolve(__dirname, 'env'))
 
-  const baseApiProxy = env.VITE_APP_BASE_API ? {
-    [env.VITE_APP_BASE_API]: {
-      target: 'https://admin.uat.dusto-yc.com',
-      changeOrigin: true,
-      secure: false,
-      rewrite: (path) => path.replace(`^${env.VITE_APP_BASE_API}`, '')
-    }
-  } : {}
+  const baseApiProxy = env.VITE_APP_BASE_API
+    ? {
+        [env.VITE_APP_BASE_API]: {
+          target: 'https://admin.uat.dusto-yc.com',
+          changeOrigin: true,
+          secure: false,
+          rewrite: (path) => path.replace(`^${env.VITE_APP_BASE_API}`, '')
+        }
+      }
+    : {}
 
   return defineConfig({
     base: './',

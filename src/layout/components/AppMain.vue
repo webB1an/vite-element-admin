@@ -1,9 +1,25 @@
 <template>
   <div class="app-main">
-    <router-view />
+    <router-view v-slot="{ Component }">
+      <keep-alive :include="cachedViews">
+        <component :is="Component" :key="key" />
+      </keep-alive>
+    </router-view>
   </div>
 </template>
+<script lang="ts" setup>
+import { computed } from 'vue'
+import { useRoute } from 'vue-router'
+import { storeToRefs } from 'pinia'
+import tagsView from '@/store/tagsView'
 
+const tagsViewStore = tagsView()
+const { cachedViews } = storeToRefs(tagsViewStore)
+
+const route = useRoute()
+
+const key = computed(() => route.path)
+</script>
 <style lang="scss">
 .app-main {
   margin: 10px;

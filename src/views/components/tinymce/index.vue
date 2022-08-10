@@ -12,6 +12,12 @@
   </el-card>
 </template>
 
+<script lang="ts">
+export default {
+  name: 'Tinymce'
+}
+</script>
+
 <script lang="ts" setup>
 import { ref } from 'vue'
 import Editor from '@/components/Tinymce/index'

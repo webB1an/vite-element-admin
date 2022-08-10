@@ -26,16 +26,16 @@ const store = createStore({
     }
   },
   actions: {
-    TestActionCommit({ state, commit, dispatch }, data: number) {
+    TestActionCommit({ commit }, data: number) {
       console.log('---------------dispatch TestActionCommit---------------')
-      return new Promise((resolve, reject) => {
+      return new Promise((resolve) => {
         setTimeout(() => {
           commit('ADD', data)
           resolve(10)
         }, 2000)
       })
     },
-    TestActionDispatch({ state, commit, dispatch }, data: number) {
+    TestActionDispatch({ dispatch }, data: number) {
       console.log('---------------TestActionDispatch dispatch TestActionCommit---------------')
       dispatch('TestActionCommit', data)
     }

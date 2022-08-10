@@ -4,16 +4,26 @@ import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
 import Layout from '@/layout/index.vue'
 import DashBoard from '@/views/dashboard/index.vue'
 
-type RouterConfig = RouteRecordRaw & { hidden?: boolean }
+export type RouterConfig = RouteRecordRaw & { hidden?: boolean }
 
-export const constantRoutes: RouterConfig[] = [
+export const constantRoutes: RouteRecordRaw[] = [
   {
     path: '/',
     redirect: '/dashboard/index'
+  },
+  {
+    path: '/redirect',
+    component: Layout,
+    children: [
+      {
+        path: '/redirect/:path*',
+        component: () => import('@/views/redirect/index.vue')
+      }
+    ]
   }
 ]
 
-export const asyncRoutes: RouterConfig[] = [
+export const asyncRoutes: RouteRecordRaw[] = [
   {
     path: '/dashboard',
     component: Layout,
@@ -23,7 +33,7 @@ export const asyncRoutes: RouterConfig[] = [
         path: 'index',
         name: 'DashBoard',
         component: DashBoard,
-        meta: { icon: 'dashboard', title: '首页' }
+        meta: { icon: 'dashboard', title: '首页', affix: true }
       }
     ]
   },
@@ -36,7 +46,7 @@ export const asyncRoutes: RouterConfig[] = [
         path: 'index',
         name: 'Documentation',
         component: () => import('@/views/documentation/index.vue'),
-        meta: { icon: 'documentation', title: '文档' }
+        meta: { icon: 'documentation', title: '文档', affix: true }
       }
     ]
   },

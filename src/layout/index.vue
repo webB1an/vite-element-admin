@@ -6,6 +6,7 @@
     <side-bar />
     <div class="main-container">
       <navbar />
+      <tags-view />
       <app-main />
     </div>
   </div>
@@ -15,8 +16,9 @@
 import { computed } from 'vue'
 import app from '@/store/app'
 import SideBar from '@/layout/components/SideBar/index.vue'
-import AppMain from '@/layout/components/AppMain.vue'
 import Navbar from './components/Navbar/index.vue'
+import TagsView from './components/TagsView/index.vue'
+import AppMain from '@/layout/components/AppMain.vue'
 
 const appStore = app()
 const openSiderbar = computed(() => appStore.siderbar.active)

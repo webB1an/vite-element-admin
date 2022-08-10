@@ -6,7 +6,6 @@ import 'virtual:svg-icons-register'
 
 import App from './App.vue'
 import router from './router'
-// import store from './store'
 
 import '@/style/reset.css'
 import 'normalize.css/normalize.css'
@@ -21,6 +20,5 @@ app.component('SvgIcon', SvgIcon)
 
 app.use(ElementPlus)
 app.use(pinia)
-// app.use(store)
 app.use(router)
 app.mount('#app')

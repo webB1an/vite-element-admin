@@ -1,9 +1,9 @@
-import 'vue-router'
+// import type { _RouteRecordBase } from 'vue-router'
 
 export {}
 
 declare module 'vue-router' {
-    interface _RouteRecordBase {
+  interface _RouteRecordBase {
     hidden?: boolean | string | number
   }
 }

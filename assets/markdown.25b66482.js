@@ -1,1 +1,0 @@
-import{b as o,o as a,c as n}from"./vendor.6ae011af.js";import{_ as c}from"./index.aa8d34d4.js";const t={};function s(e,r){return" Wait Todo "}var _=c(t,[["render",s]]);const i=o({setup(e){return(r,d)=>(a(),n(_))}});export{i as default};

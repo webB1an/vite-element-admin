@@ -164,15 +164,57 @@ export const asyncRoutes: RouteRecordRaw[] = [
   },
   {
     path: '/tabs',
-    // name: 'Components',
     component: Layout,
     redirect: '/components/index',
     children: [
       {
         path: 'index',
-        name: 'tabs',
+        name: 'Tabs',
         component: () => import('@/views/tabs/index.vue'),
         meta: { icon: 'tabs', title: 'Tab' }
+      }
+    ]
+  },
+  {
+    path: '/external-link',
+    component: Layout,
+    meta: { icon: 'external', title: '外部链接' },
+    redirect: '/external-link/vue',
+    children: [
+      {
+        path: 'vue',
+        name: 'Vue',
+        component: () => import('@/views/external-link/iframe.vue'),
+        meta: { title: 'Vue', link: 'https://cn.vuejs.org/' }
+      },
+      {
+        path: 'element-ui',
+        name: 'ElementUI',
+        component: () => import('@/views/external-link/iframe.vue'),
+        meta: { title: 'Element UI', link: 'https://element-plus.org/' }
+      },
+      {
+        path: 'github',
+        name: 'Github',
+        component: () => import('@/views/external-link/iframe.vue'),
+        meta: { title: '外链' },
+        beforeEnter() {
+          window.open('https://github.com/webB1an/vite-element-admin')
+          return false
+        }
+      }
+    ]
+  },
+  {
+    path: '/project',
+    component: Layout,
+    redirect: '/project/index',
+    children: [
+      {
+        path: 'index',
+        name: 'Project',
+        component: () => import('@/views/project/index.vue'),
+        meta: { icon: 'info', title: '项目信息' }
       }
     ]
   }

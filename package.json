@@ -1,6 +1,6 @@
 {
-  "name": "vite-app",
-  "version": "0.0.0",
+  "name": "vite-element-admin",
+  "version": "0.0.1",
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build --mode staging",
@@ -13,6 +13,7 @@
   "dependencies": {
     "@tinymce/tinymce-vue": "^5.0.0",
     "axios": "^0.27.2",
+    "dayjs": "^1.11.5",
     "element-plus": "^2.2.5",
     "js-cookie": "^3.0.1",
     "nanoid": "^4.0.0",

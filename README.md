@@ -8,7 +8,8 @@
 - [x] 表格动态数据
 - [x] 表格分页数据
 - [x] 菜单滚动
-- [ ] tagViews
+- [x] tagViews
+- [ ] tagViews 滚动
 - [ ] Login 页面
 - [x] Tabs 页面
 - [ ] ...

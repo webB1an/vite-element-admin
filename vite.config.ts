@@ -2,7 +2,21 @@ import path, { resolve } from 'path'
 import { defineConfig, loadEnv } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
+import dayjs from 'dayjs'
 // import DefineOptions from 'unplugin-vue-define-options/vite'
+import pkg from './package.json'
+
+const { name, version, dependencies, devDependencies } = pkg
+
+const __APP_INFO__ = {
+  pkg: {
+    name,
+    version,
+    dependencies,
+    devDependencies
+  },
+  lastBuildTime: dayjs().format('YYYY-MM-DD HH:mm:ss')
+}
 
 // https://vitejs.dev/config/
 export default ({ mode }) => {
@@ -29,6 +43,9 @@ export default ({ mode }) => {
       proxy: {
         ...baseApiProxy
       }
+    },
+    define: {
+      __APP_INFO__: JSON.stringify(__APP_INFO__)
     },
     plugins: [
       vue(),

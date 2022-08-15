@@ -63,9 +63,5 @@ const hideSiderbar = computed(() => !appStore.siderbar.active)
       }
     }
   }
-
-  .main-container {
-    margin-left: $sideCollapseWidth;
-  }
 }
 </style>

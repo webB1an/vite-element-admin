@@ -34,7 +34,7 @@ export default ({ mode }) => {
     : {}
 
   return defineConfig({
-    base: '/vite-element-admin/',
+    base: './',
     envDir: resolve(__dirname, 'env'),
     server: {
       port: 9527,

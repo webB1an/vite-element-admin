@@ -4,7 +4,7 @@
     :toolbar="toolbar"
     :plugins="plugins"
     language="zh-Hans"
-    tinymce-script-src="/tinymce/tinymce.min.js"
+    tinymce-script-src="/vite-element-admin/tinymce/tinymce.min.js"
   />
   <el-card class="rich-text mt20">
     <!-- eslint-disable-next-line vue/no-v-html -->

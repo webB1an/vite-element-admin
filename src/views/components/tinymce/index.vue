@@ -26,7 +26,7 @@ import toolbar from './toolbar'
 import plugins from './plugins'
 
 const TinymceScriptSrc = ref(
-  path.resolve(import.meta.env.VITE_APP_PUBLIC_URL, 'tinymce/tinymce.min.js')
+  path.join(import.meta.env.VITE_APP_PUBLIC_URL, '/tinymce/tinymce.min.js')
 )
 
 const content = ref(`

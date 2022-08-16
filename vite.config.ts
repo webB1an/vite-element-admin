@@ -21,7 +21,7 @@ const __APP_INFO__ = {
 // https://vitejs.dev/config/
 export default ({ mode }) => {
   const env = loadEnv(mode, resolve(__dirname, 'env'))
-  console.log('env', env)
+
   const baseApiProxy = env.VITE_APP_BASE_API
     ? {
         [env.VITE_APP_BASE_API]: {

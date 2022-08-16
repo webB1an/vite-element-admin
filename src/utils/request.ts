@@ -3,7 +3,7 @@ import type { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios'
 import { ElMessage } from 'element-plus'
 
 const service: AxiosInstance = axios.create({
-  baseURL: import.meta.env.VITE_APP_BASE_API as string
+  baseURL: import.meta.env.VITE_APP_BASE_API
 })
 
 service.interceptors.request.use(

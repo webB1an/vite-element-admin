@@ -4,7 +4,7 @@
     :toolbar="toolbar"
     :plugins="plugins"
     language="zh-Hans"
-    tinymce-script-src="/vite-element-admin/tinymce/tinymce.min.js"
+    :tinymce-script-src="TinymceScriptSrc"
   />
   <el-card class="rich-text mt20">
     <!-- eslint-disable-next-line vue/no-v-html -->
@@ -20,16 +20,16 @@ export default {
 
 <script lang="ts" setup>
 import { ref } from 'vue'
-// import path from 'path-browserify'
+import path from 'path-browserify'
 import Editor from '@/components/Tinymce/index'
 import toolbar from './toolbar'
 import plugins from './plugins'
 
-// const resolve = (url: string): string => path.resolve(props.baseUrl, url)
-// const TinymceScriptSrc = path.resolve(
-//   import.meta.env.VITE_APP_PUBLIC_URL as string,
-//   '/tinymce/tinymce.min.js'
-// )
+console.log(import.meta.env.VITE_APP_PUBLIC_URL)
+const TinymceScriptSrc = path.resolve(
+  import.meta.env.VITE_APP_PUBLIC_URL,
+  '/tinymce/tinymce.min.js'
+)
 
 const content = ref(`
 <h1 style="text-align: center;">WOW Welcome Tinymce Demo</h1>

@@ -6,7 +6,6 @@
     language="zh-Hans"
     :tinymce-script-src="TinymceScriptSrc"
   />
-  {{ TinymceScriptSrc }}
   <el-card class="rich-text mt20">
     <!-- eslint-disable-next-line vue/no-v-html -->
     <div v-html="content"></div>
@@ -27,7 +26,7 @@ import toolbar from './toolbar'
 import plugins from './plugins'
 
 const TinymceScriptSrc = ref(
-  path.resolve(import.meta.env.VITE_APP_PUBLIC_URL, '/tinymce/tinymce.min.js')
+  path.resolve(import.meta.env.VITE_APP_PUBLIC_URL, 'tinymce/tinymce.min.js')
 )
 
 const content = ref(`

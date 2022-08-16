@@ -27,7 +27,7 @@ import plugins from './plugins'
 
 // const resolve = (url: string): string => path.resolve(props.baseUrl, url)
 const TinymceScriptSrc = path.resolve(
-  import.meta.env.VITE_APP_PUBLIC_URL,
+  import.meta.env.VITE_APP_PUBLIC_URL as string,
   '/tinymce/tinymce.min.js'
 )
 

@@ -5,4 +5,4 @@ var U=Object.defineProperty,N=Object.defineProperties;var T=Object.getOwnPropert
   <li>2</li>
   <li>3</li>
 </ul>
-`);return(n,a)=>{const o=q("el-card");return $(),Q(X,null,[V(E(fe),{modelValue:t.value,"onUpdate:modelValue":a[0]||(a[0]=s=>t.value=s),toolbar:E(ve),plugins:E(ye),language:"zh-Hans","tinymce-script-src":"/public/tinymce/tinymce.min.js"},null,8,["modelValue","toolbar","plugins"]),V(o,{class:"rich-text mt20"},{default:J(()=>[Y(" eslint-disable-next-line vue/no-v-html "),Z("div",{innerHTML:t.value},null,8,he)]),_:1})],64)}}}));export{Se as default};
+`);return(n,a)=>{const o=q("el-card");return $(),Q(X,null,[V(E(fe),{modelValue:t.value,"onUpdate:modelValue":a[0]||(a[0]=s=>t.value=s),toolbar:E(ve),plugins:E(ye),language:"zh-Hans","tinymce-script-src":"/tinymce/tinymce.min.js"},null,8,["modelValue","toolbar","plugins"]),V(o,{class:"rich-text mt20"},{default:J(()=>[Y(" eslint-disable-next-line vue/no-v-html "),Z("div",{innerHTML:t.value},null,8,he)]),_:1})],64)}}}));export{Se as default};

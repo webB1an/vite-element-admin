@@ -79,8 +79,6 @@ import { GITHUB_REPOSITORY_URL, WEB_SITE_URL } from '@/settings/siteSetting'
 
 const { pkg, lastBuildTime } = __APP_INFO__
 const { name, version, dependencies, devDependencies } = pkg
-
-console.log(dependencies)
 </script>
 
 <style lang="scss" scoped></style>

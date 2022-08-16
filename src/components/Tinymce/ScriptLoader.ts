@@ -8,11 +8,11 @@
 
 import { uuid } from './Utils'
 
-export type callbackFn = () => void;
+export type callbackFn = () => void
 export interface IStateObj {
-  listeners: callbackFn[];
-  scriptId: string;
-  scriptLoaded: boolean;
+  listeners: callbackFn[]
+  scriptId: string
+  scriptLoaded: boolean
 }
 
 const createState = (): IStateObj => ({
@@ -22,8 +22,8 @@ const createState = (): IStateObj => ({
 })
 
 interface IScriptLoader {
-  load: (doc: Document, url: string, callback: callbackFn) => void;
-  reinitialize: () => void;
+  load: (doc: Document, url: string, callback: callbackFn) => void
+  reinitialize: () => void
 }
 
 const CreateScriptLoader = (): IScriptLoader => {
@@ -73,6 +73,4 @@ const CreateScriptLoader = (): IScriptLoader => {
 
 const ScriptLoader = CreateScriptLoader()
 
-export {
-  ScriptLoader
-}
+export { ScriptLoader }

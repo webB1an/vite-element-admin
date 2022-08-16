@@ -7,26 +7,26 @@
  */
 import { TinyMCE } from 'tinymce'
 
-type EditorOptions = Parameters<TinyMCE['init']>[0];
+type EditorOptions = Parameters<TinyMCE['init']>[0]
 
-export type CopyProps<T> = { [P in keyof T]: any };
+export type CopyProps<T> = { [P in keyof T]: any }
 
 export interface IPropTypes {
-  apiKey: string;
-  cloudChannel: string;
-  id: string;
-  init: EditorOptions;
-  initialValue: string;
-  outputFormat: 'html' | 'text';
-  inline: boolean;
-  modelEvents: string[] | string;
-  language: string | undefined,
-  plugins: string[] | string;
-  tagName: string;
-  toolbar: string[] | string;
-  modelValue: string;
-  disabled: boolean;
-  tinymceScriptSrc: string;
+  apiKey: string
+  cloudChannel: string
+  id: string
+  init: EditorOptions
+  initialValue: string
+  outputFormat: 'html' | 'text'
+  inline: boolean
+  modelEvents: string[] | string
+  language: string | undefined
+  plugins: string[] | string
+  tagName: string
+  toolbar: string[] | string
+  modelValue: string
+  disabled: boolean
+  tinymceScriptSrc: string
 }
 
 export const editorProps: CopyProps<IPropTypes> = {

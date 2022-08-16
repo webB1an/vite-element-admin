@@ -75,29 +75,44 @@ const validEvents = [
   'onVisualAid'
 ]
 
-const isValidKey = (key: string) => validEvents.map((event) => event.toLowerCase()).indexOf(key.toLowerCase()) !== -1
+const isValidKey = (key: string) =>
+  validEvents.map((event) => event.toLowerCase()).indexOf(key.toLowerCase()) !== -1
 
-const bindHandlers = (initEvent: EditorEvent<any>, listeners: Record<string, any>, editor: TinyMCEEditor): void => {
+const bindHandlers = (
+  initEvent: EditorEvent<any>,
+  listeners: Record<string, any>,
+  editor: TinyMCEEditor
+): void => {
   Object.keys(listeners)
-  .filter(isValidKey)
-  .forEach((key: string) => {
-    const handler = listeners[key]
-    if (typeof handler === 'function') {
-      if (key === 'onInit') {
-        handler(initEvent, editor)
-      } else {
-        editor.on(key.substring(2), (e: EditorEvent<any>) => handler(e, editor))
+    .filter(isValidKey)
+    .forEach((key: string) => {
+      const handler = listeners[key]
+      if (typeof handler === 'function') {
+        if (key === 'onInit') {
+          handler(initEvent, editor)
+        } else {
+          editor.on(key.substring(2), (e: EditorEvent<any>) => handler(e, editor))
+        }
       }
-    }
-  })
+    })
 }
 
-const bindModelHandlers = (props: IPropTypes, ctx: SetupContext, editor: TinyMCEEditor, modelValue: Ref<any>) => {
+const bindModelHandlers = (
+  props: IPropTypes,
+  ctx: SetupContext,
+  editor: TinyMCEEditor,
+  modelValue: Ref<any>
+) => {
   const modelEvents = props.modelEvents ? props.modelEvents : null
   const normalizedEvents = Array.isArray(modelEvents) ? modelEvents.join(' ') : modelEvents
 
   watch(modelValue, (val: string, prevVal: string) => {
-    if (editor && typeof val === 'string' && val !== prevVal && val !== editor.getContent({ format: props.outputFormat })) {
+    if (
+      editor &&
+      typeof val === 'string' &&
+      val !== prevVal &&
+      val !== editor.getContent({ format: props.outputFormat })
+    ) {
       editor.setContent(val)
     }
   })
@@ -133,7 +148,8 @@ const uuid = (prefix: string): string => {
   return prefix + '_' + random + unique + String(time)
 }
 
-const isTextarea = (element: Element | null): element is HTMLTextAreaElement => element !== null && element.tagName.toLowerCase() === 'textarea'
+const isTextarea = (element: Element | null): element is HTMLTextAreaElement =>
+  element !== null && element.tagName.toLowerCase() === 'textarea'
 
 const normalizePluginArray = (plugins?: string | string[]): string[] => {
   if (typeof plugins === 'undefined' || plugins === '') {
@@ -143,9 +159,13 @@ const normalizePluginArray = (plugins?: string | string[]): string[] => {
   return Array.isArray(plugins) ? plugins : plugins.split(' ')
 }
 
-const mergePlugins = (initPlugins: string | string[] | undefined, inputPlugins?: string | string[]) => normalizePluginArray(initPlugins).concat(normalizePluginArray(inputPlugins))
+const mergePlugins = (
+  initPlugins: string | string[] | undefined,
+  inputPlugins?: string | string[]
+) => normalizePluginArray(initPlugins).concat(normalizePluginArray(inputPlugins))
 
-const isNullOrUndefined = (value: any): value is null | undefined => value === null || value === undefined
+const isNullOrUndefined = (value: any): value is null | undefined =>
+  value === null || value === undefined
 
 export {
   bindHandlers,

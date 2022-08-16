@@ -10,22 +10,36 @@ import { ScriptLoader } from '../ScriptLoader'
 import { getTinymce } from '../TinyMCE'
 import { isTextarea, mergePlugins, uuid, isNullOrUndefined, initEditor } from '../Utils'
 import { editorProps, IPropTypes } from './EditorPropTypes'
-import { h, defineComponent, onMounted, ref, Ref, toRefs, nextTick, watch, onBeforeUnmount, onActivated, onDeactivated } from 'vue'
+import {
+  h,
+  defineComponent,
+  onMounted,
+  ref,
+  Ref,
+  toRefs,
+  nextTick,
+  watch,
+  onBeforeUnmount,
+  onActivated,
+  onDeactivated
+} from 'vue'
 import { Editor as TinyMCEEditor, EditorEvent, TinyMCE } from 'tinymce'
 // import { TinyMCE, EditorEvent, Editor as TinyMCEEditor } from 'public/tinymce/tinymce'
 
-type EditorOptions = Parameters<TinyMCE['init']>[0];
+type EditorOptions = Parameters<TinyMCE['init']>[0]
 
-const renderInline = (ce: any, id: string, elementRef: Ref<Element | null>, tagName?: string) => ce(tagName || 'div', {
-  id,
-  ref: elementRef
-})
+const renderInline = (ce: any, id: string, elementRef: Ref<Element | null>, tagName?: string) =>
+  ce(tagName || 'div', {
+    id,
+    ref: elementRef
+  })
 
-const renderIframe = (ce: any, id: string, elementRef: Ref<Element | null>) => ce('textarea', {
-  id,
-  visibility: 'hidden',
-  ref: elementRef
-})
+const renderIframe = (ce: any, id: string, elementRef: Ref<Element | null>) =>
+  ce('textarea', {
+    id,
+    visibility: 'hidden',
+    ref: elementRef
+  })
 
 export const Editor = defineComponent({
   props: editorProps,
@@ -41,9 +55,10 @@ export const Editor = defineComponent({
     const initialValue: string = props.initialValue ? props.initialValue : ''
     let cache = ''
 
-    const getContent = (isMounting: boolean): () => string => (modelBind
-      ? () => (modelValue?.value ? modelValue.value : '')
-      : () => (isMounting ? initialValue : cache))
+    const getContent = (isMounting: boolean): (() => string) =>
+      modelBind
+        ? () => (modelValue?.value ? modelValue.value : '')
+        : () => (isMounting ? initialValue : cache)
 
     const initWrapper = (): void => {
       const content = getContent(mounting)
@@ -53,11 +68,13 @@ export const Editor = defineComponent({
         selector: `#${elementId}`,
         language: props.language || 'zh_CN',
         plugins: mergePlugins(conf.plugins, props.plugins),
-        toolbar: props.toolbar || (conf.toolbar),
+        toolbar: props.toolbar || conf.toolbar,
         inline: inlineEditor,
         setup: (editor: TinyMCEEditor) => {
           vueEditor = editor
-          editor.on('init', (e: EditorEvent<any>) => initEditor(e, props, ctx, editor, modelValue, content))
+          editor.on('init', (e: EditorEvent<any>) =>
+            initEditor(e, props, ctx, editor, modelValue, content)
+          )
           if (typeof conf.setup === 'function') {
             conf.setup(editor)
           }
@@ -96,11 +113,7 @@ export const Editor = defineComponent({
           ? `https://cdn.tiny.cloud/1/${apiKey}/tinymce/${channel}/tinymce.min.js`
           : props.tinymceScriptSrc
 
-        ScriptLoader.load(
-          element.value.ownerDocument,
-          scriptSrc,
-          initWrapper
-        )
+        ScriptLoader.load(element.value.ownerDocument, scriptSrc, initWrapper)
       }
     })
     onBeforeUnmount(() => {
@@ -134,8 +147,9 @@ export const Editor = defineComponent({
     ctx.expose({
       rerender
     })
-    return () => (inlineEditor
-      ? renderInline(h, elementId, element, props.tagName)
-      : renderIframe(h, elementId, element))
+    return () =>
+      inlineEditor
+        ? renderInline(h, elementId, element, props.tagName)
+        : renderIframe(h, elementId, element)
   }
 })

@@ -1,9 +1,5 @@
 <template>
-  <el-button
-    type="primary"
-    size="large"
-    @click="toExtantLink('https://github.com/webB1an/vite-element-admin')"
-  >
+  <el-button type="primary" @click="toExtantLink('https://github.com/webB1an/vite-element-admin')">
     Github Repository
   </el-button>
 </template>

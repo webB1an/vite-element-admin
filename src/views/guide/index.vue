@@ -8,6 +8,8 @@
 import Driver from 'driver.js'
 import 'driver.js/dist/driver.min.css'
 
+import steps from './steps'
+
 const driver = new Driver({
   nextBtnText: '下一个',
   prevBtnText: '上一个',
@@ -15,24 +17,7 @@ const driver = new Driver({
 })
 
 const guide = () => {
-  driver.defineSteps([
-    {
-      element: '#hamburger-container',
-      popover: {
-        title: '侧边栏控制',
-        description: '打开或关闭侧边栏',
-        position: 'bottom'
-      }
-    },
-    {
-      element: '#tags-view-container',
-      popover: {
-        title: '页面历史',
-        description: '切换浏览页面',
-        position: 'bottom'
-      }
-    }
-  ])
+  driver.defineSteps(steps)
   driver.start()
 }
 </script>

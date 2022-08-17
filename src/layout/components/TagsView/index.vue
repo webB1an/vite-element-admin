@@ -1,5 +1,5 @@
 <template>
-  <div class="tags-view-container">
+  <div id="tags-view-container" class="tags-view-container">
     <div
       v-for="item in visitedViews"
       @click="toLink(item)"
@@ -11,16 +11,16 @@
       {{ item.meta?.title }}
       <span v-if="!isAffix(item)" class="tags-view-close">×</span>
     </div>
-  </div>
 
-  <Teleport to="body">
-    <ul class="contextmenu" v-show="visible" :style="{ left: left + 'px', top: top + 'px' }">
-      <li @click="refreshSelectedTag(selectedTag)">刷新</li>
-      <li v-if="!isAffix(selectedTag)" @click="closeSelectedTag(selectedTag)">关闭</li>
-      <li @click="closeOtherTags(selectedTag)">关闭其他</li>
-      <li @click="closeAllTags(selectedTag)">关闭所有</li>
-    </ul>
-  </Teleport>
+    <Teleport to="body">
+      <ul class="contextmenu" v-show="visible" :style="{ left: left + 'px', top: top + 'px' }">
+        <li @click="refreshSelectedTag(selectedTag)">刷新</li>
+        <li v-if="!isAffix(selectedTag)" @click="closeSelectedTag(selectedTag)">关闭</li>
+        <li @click="closeOtherTags(selectedTag)">关闭其他</li>
+        <li @click="closeAllTags(selectedTag)">关闭所有</li>
+      </ul>
+    </Teleport>
+  </div>
 </template>
 
 <script lang="ts" setup>

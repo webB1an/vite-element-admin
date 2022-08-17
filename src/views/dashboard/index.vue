@@ -156,6 +156,8 @@ const tableData = ref<IOrder[]>(orders)
   }
 
   &-description {
+    font-size: 18px;
+    font-weight: bold;
     margin: 10px 10px 10px 0;
   }
 
@@ -164,11 +166,6 @@ const tableData = ref<IOrder[]>(orders)
     font-size: 20px;
     font-weight: bold;
     margin-bottom: 10px;
-  }
-
-  &-description {
-    font-size: 18px;
-    font-weight: bold;
   }
 }
 

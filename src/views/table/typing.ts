@@ -15,12 +15,6 @@ export interface FruitTableData {
   orange: string
 }
 
-// export interface FilterForm {
-//   name: string
-//   account: string
-//   status: string
-// }
-
 export enum EDialogType {
   editor = 1,
   add

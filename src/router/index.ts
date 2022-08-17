@@ -51,6 +51,19 @@ export const asyncRoutes: RouteRecordRaw[] = [
     ]
   },
   {
+    path: '/guide',
+    component: Layout,
+    redirect: '/guide/index',
+    children: [
+      {
+        path: 'index',
+        name: 'Guide',
+        component: () => import('@/views/guide/index.vue'),
+        meta: { icon: 'guide', title: '引导页', affix: true }
+      }
+    ]
+  },
+  {
     path: '/icon',
     component: Layout,
     redirect: '/icon/index',

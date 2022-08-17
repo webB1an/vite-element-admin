@@ -1,5 +1,5 @@
 <template>
-  <div class="hamburger-container">
+  <div id="hamburger-container" class="hamburger-container">
     <svg
       :class="{ active: siderbar.active }"
       class="hamburger"

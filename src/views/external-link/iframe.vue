@@ -3,22 +3,18 @@
 </template>
 
 <script lang="ts" setup>
-import { computed } from 'vue'
+import { computed, getCurrentInstance } from 'vue'
 import { useRoute } from 'vue-router'
-import { ElLoading } from 'element-plus'
 
 const route = useRoute()
 
-const loadingInstance: { close: () => void } = ElLoading.service({
-  lock: true,
-  text: 'Loading',
-  background: 'rgba(0, 0, 0, 0.7)'
-})
+const loading = getCurrentInstance()?.proxy?.$loading
+loading?.show({ text: '加载中...' })
 
 const link = computed(() => route.meta.link as string)
 
 const load = () => {
-  loadingInstance.close()
+  loading?.close()
 }
 
 // watch(

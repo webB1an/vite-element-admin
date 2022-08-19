@@ -102,6 +102,12 @@ const tableData = ref<IOrder[]>(orders)
 // console.log(import.meta.globEager('../../icons/svg/**/*.svg'))
 // const svg = import.meta.globEager('../../icons/svg/**/*.svg')
 // Object.keys(svg).map(item => console.log(item))
+
+// const loading = getCurrentInstance()?.proxy?.$loading
+// console.log(loading?.show({ text: '加载中...' }))
+// setTimeout(() => {
+//   loading?.close()
+// }, 2000)
 </script>
 
 <style lang="scss">

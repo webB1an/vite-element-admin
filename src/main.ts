@@ -13,6 +13,8 @@ import 'element-plus/dist/index.css'
 
 import SvgIcon from '@/components/SvgIcon.vue'
 
+import loading from '@/components/Loading/index'
+
 const app = createApp(App)
 const pinia = createPinia()
 
@@ -21,4 +23,5 @@ app.component('SvgIcon', SvgIcon)
 app.use(ElementPlus)
 app.use(pinia)
 app.use(router)
+app.use(loading)
 app.mount('#app')

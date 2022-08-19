@@ -1,16 +1,39 @@
 import axios from 'axios'
 import type { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios'
 import { ElMessage } from 'element-plus'
+import { CustomLoading } from '@/components/Loading'
 
 const service: AxiosInstance = axios.create({
   baseURL: import.meta.env.VITE_APP_BASE_API
 })
 
+let requestTimes = 0
+
+function startLoading() {
+  if (requestTimes === 0) {
+    CustomLoading.show({ text: '加载中...' })
+  }
+  requestTimes++
+}
+
+function shutDownLoading() {
+  CustomLoading.close()
+}
+
+function endLoading() {
+  requestTimes--
+  if (requestTimes <= 0) {
+    shutDownLoading()
+  }
+}
+
 service.interceptors.request.use(
   (config: AxiosRequestConfig) => {
+    startLoading()
     return config
   },
   (error) => {
+    shutDownLoading()
     return Promise.reject(error)
   }
 )
@@ -27,9 +50,11 @@ service.interceptors.response.use(
         return Promise.reject(res)
       }
     }*/
+    endLoading()
     return response
   },
   (error) => {
+    shutDownLoading()
     ElMessage({
       message: error.message,
       type: 'error',

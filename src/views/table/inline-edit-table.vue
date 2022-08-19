@@ -1,12 +1,5 @@
 <template>
-  <el-table
-    ref="inlineEditTable"
-    :data="tableData"
-    v-loading="loading"
-    row-key="id"
-    border
-    style="width: 100%"
-  >
+  <el-table ref="inlineEditTable" :data="tableData" row-key="id" border style="width: 100%">
     <el-table-column align="center" prop="id" label="id" width="50" />
     <el-table-column
       class-name="avatar-column"
@@ -75,8 +68,6 @@ import { getList, updateItem } from '@/api/article'
 
 const { total, query } = usePagination()
 
-const loading = ref(false)
-
 const tableData = ref<Article[]>([])
 
 const editor = (row: Article) => {
@@ -111,11 +102,9 @@ const cancelEditor = (row: Article) => {
 }
 
 const fetchList = async () => {
-  loading.value = true
   const res = await getList({ ...query })
   tableData.value = res.data.list
   total.value = res.data.total
-  loading.value = false
 }
 
 const handlePageChange = () => {

@@ -15,10 +15,9 @@ import Hamburger from './Hamburger.vue'
 //   isActive: false,
 //   toggleSidebar: () => {}
 // })
-
 </script>
 <style lang="scss">
-@import "@/style/variable.scss";
+@import '@/style/variable.scss';
 
 .navbar-container {
   background-color: #fff;

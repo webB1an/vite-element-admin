@@ -28,8 +28,8 @@ export const constantRoutes: RouteRecordRaw[] = [
 export const asyncRoutes: RouteRecordRaw[] = [
   {
     path: '/dashboard',
-    component: Layout,
     redirect: '/dashboard/index',
+    component: Layout,
     children: [
       {
         path: 'index',
@@ -41,8 +41,8 @@ export const asyncRoutes: RouteRecordRaw[] = [
   },
   {
     path: '/documentation',
-    component: Layout,
     redirect: '/documentation/index',
+    component: Layout,
     children: [
       {
         path: 'index',
@@ -54,8 +54,8 @@ export const asyncRoutes: RouteRecordRaw[] = [
   },
   {
     path: '/guide',
-    component: Layout,
     redirect: '/guide/index',
+    component: Layout,
     children: [
       {
         path: 'index',
@@ -67,8 +67,8 @@ export const asyncRoutes: RouteRecordRaw[] = [
   },
   {
     path: '/icon',
-    component: Layout,
     redirect: '/icon/index',
+    component: Layout,
     children: [
       {
         path: 'index',
@@ -81,8 +81,8 @@ export const asyncRoutes: RouteRecordRaw[] = [
   {
     path: '/components',
     // name: 'Components',
-    component: Layout,
     redirect: '/components/tinymce',
+    component: Layout,
     meta: { icon: 'component', title: '组件' },
     children: [
       {
@@ -101,6 +101,7 @@ export const asyncRoutes: RouteRecordRaw[] = [
   },
   {
     path: '/nested',
+    redirect: '/nested/menu1',
     component: Layout,
     meta: { icon: 'nested', title: '嵌套' },
     children: [
@@ -112,6 +113,7 @@ export const asyncRoutes: RouteRecordRaw[] = [
       },
       {
         path: 'menu2',
+        redirect: '/nested/menu2/menu2-1',
         name: 'menu2',
         component: () => import('@/views/nested/menu2/index.vue'),
         meta: { title: '菜单 2' },
@@ -124,6 +126,7 @@ export const asyncRoutes: RouteRecordRaw[] = [
           },
           {
             path: 'menu2-2',
+            redirect: '/nested/menu2/menu2-2/menu2-2-1',
             name: 'menu2-2',
             component: () => import('@/views/nested/menu2/menu2-2/index.vue'),
             meta: { title: '菜单 2-2' },
@@ -148,6 +151,7 @@ export const asyncRoutes: RouteRecordRaw[] = [
   },
   {
     path: '/table',
+    redirect: '/table/dynamic-table',
     component: Layout,
     meta: { icon: 'table', title: 'Table' },
     children: [
@@ -179,8 +183,8 @@ export const asyncRoutes: RouteRecordRaw[] = [
   },
   {
     path: '/tabs',
-    component: Layout,
     redirect: '/components/index',
+    component: Layout,
     children: [
       {
         path: 'index',
@@ -192,9 +196,9 @@ export const asyncRoutes: RouteRecordRaw[] = [
   },
   {
     path: '/external-link',
+    redirect: '/external-link/vue',
     component: Layout,
     meta: { icon: 'external', title: '外部链接' },
-    redirect: '/external-link/vue',
     children: [
       {
         path: 'vue',
@@ -222,8 +226,8 @@ export const asyncRoutes: RouteRecordRaw[] = [
   },
   {
     path: '/project',
-    component: Layout,
     redirect: '/project/index',
+    component: Layout,
     children: [
       {
         path: 'index',

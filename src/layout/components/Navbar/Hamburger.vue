@@ -40,6 +40,7 @@ const toggle = () => appStore.toggleSidebar()
   display: flex;
   align-items: center;
   justify-content: center;
+  float: left;
   cursor: pointer;
 
   .hamburger {

@@ -1,26 +1,30 @@
 <template>
-  <div id="tags-view-container" class="tags-view-container">
-    <div
-      v-for="item in visitedViews"
-      @click="toLink(item)"
-      @contextmenu.prevent="openMenu(item, $event)"
-      :key="item.path"
-      :class="{ 'tags-view-active': item.path === route.path }"
-      class="tags-view"
-    >
-      {{ item.meta?.title }}
-      <span v-if="!isAffix(item)" class="tags-view-close">×</span>
+  <el-scrollbar>
+    <div id="tags-view-container" class="tags-view-container">
+      <div
+        v-for="item in visitedViews"
+        @click="toLink(item)"
+        @contextmenu.prevent="openMenu(item, $event)"
+        :key="item.path"
+        :class="{ 'tags-view-active': item.path === route.path }"
+        class="tags-view"
+      >
+        {{ item.meta?.title }}
+        <span v-if="!isAffix(item)" @click.stop="closeSelectedTag(item)" class="tags-view-close">
+          ×
+        </span>
+      </div>
     </div>
+  </el-scrollbar>
 
-    <Teleport to="body">
-      <ul class="contextmenu" v-show="visible" :style="{ left: left + 'px', top: top + 'px' }">
-        <li @click="refreshSelectedTag(selectedTag)">刷新</li>
-        <li v-if="!isAffix(selectedTag)" @click="closeSelectedTag(selectedTag)">关闭</li>
-        <li @click="closeOtherTags(selectedTag)">关闭其他</li>
-        <li @click="closeAllTags(selectedTag)">关闭所有</li>
-      </ul>
-    </Teleport>
-  </div>
+  <Teleport to="body">
+    <ul class="contextmenu" v-show="visible" :style="{ left: left + 'px', top: top + 'px' }">
+      <li @click="refreshSelectedTag(selectedTag)">刷新</li>
+      <li v-if="!isAffix(selectedTag)" @click="closeSelectedTag(selectedTag)">关闭</li>
+      <li @click="closeOtherTags(selectedTag)">关闭其他</li>
+      <li @click="closeAllTags(selectedTag)">关闭所有</li>
+    </ul>
+  </Teleport>
 </template>
 
 <script lang="ts" setup>
@@ -109,7 +113,6 @@ const openMenu = (tag: RouteLocationNormalizedLoaded, e: MouseEvent) => {
 }
 
 const closeMenu = () => {
-  console.log('---------------close menu---------------')
   visible.value = false
 }
 
@@ -193,6 +196,7 @@ watch(visible, (value) => {
   background-color: #fff;
 
   .tags-view {
+    flex-shrink: 0;
     display: flex;
     align-items: center;
     height: 26px;

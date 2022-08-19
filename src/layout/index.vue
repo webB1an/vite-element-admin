@@ -40,10 +40,13 @@ const hideSiderbar = computed(() => !appStore.siderbar.active)
   }
 }
 
+.sidebar-container {
+  transition: width $sideTransitionTime;
+}
+
 .open-siderbar {
   .sidebar-container {
     width: $sideWidth;
-    transition: width $sideTransitionTime;
   }
 }
 
@@ -62,6 +65,10 @@ const hideSiderbar = computed(() => !appStore.siderbar.active)
         justify-content: center;
       }
     }
+  }
+
+  .main-container {
+    margin-left: $sideCollapseWidth;
   }
 }
 </style>

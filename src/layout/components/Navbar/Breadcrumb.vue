@@ -1,5 +1,5 @@
 <template>
-  <el-breadcrumb class="breadcrumb" separator="/">
+  <el-breadcrumb id="breadcrumb-container" class="breadcrumb-container" separator="/">
     <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
     <el-breadcrumb-item v-for="item in routes" :key="item.path" :to="item.path">
       {{ item.meta.title }}
@@ -32,7 +32,7 @@ watch(
 <style lang="scss" scoped>
 @import '@/style/variable.scss';
 
-.breadcrumb {
+.breadcrumb-container {
   float: left;
   height: $navbarHeight;
   line-height: $navbarHeight;

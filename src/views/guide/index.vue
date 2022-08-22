@@ -13,6 +13,7 @@ import steps from './steps'
 const driver = new Driver({
   nextBtnText: '下一个',
   prevBtnText: '上一个',
+  doneBtnText: '完成',
   closeBtnText: '关闭'
 })
 

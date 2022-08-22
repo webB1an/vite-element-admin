@@ -10,6 +10,14 @@ const steps: Step[] = [
     }
   },
   {
+    element: '#breadcrumb-container',
+    popover: {
+      title: '导航',
+      description: '指示当前页面位置',
+      position: 'bottom'
+    }
+  },
+  {
     element: '#tags-view-container',
     popover: {
       title: '页面历史',

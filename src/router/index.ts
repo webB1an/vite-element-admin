@@ -225,6 +225,19 @@ export const asyncRoutes: RouteRecordRaw[] = [
     ]
   },
   {
+    path: '/clipboard',
+    redirect: '/clipboard/index',
+    component: Layout,
+    children: [
+      {
+        path: 'index',
+        name: 'Clipboard',
+        component: () => import('@/views/clipboard/index.vue'),
+        meta: { icon: 'copy', title: 'Clipboard' }
+      }
+    ]
+  },
+  {
     path: '/project',
     redirect: '/project/index',
     component: Layout,

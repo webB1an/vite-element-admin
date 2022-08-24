@@ -14,6 +14,7 @@
 
 <script lang="ts" setup>
 import { ref, onMounted } from 'vue'
+// @ts-ignore
 import Sortable from 'sortablejs'
 
 import type { ElTable } from 'element-plus'

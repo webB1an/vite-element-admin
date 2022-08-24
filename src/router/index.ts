@@ -96,6 +96,12 @@ export const asyncRoutes: RouteRecordRaw[] = [
         name: 'Markdown',
         component: () => import('@/views/components/markdown.vue'),
         meta: { title: 'Markdown' }
+      },
+      {
+        path: 'json-editor',
+        name: 'JsonEditor',
+        component: () => import('@/views/components/jsonEditor.vue'),
+        meta: { title: 'JSON 编辑器' }
       }
     ]
   },

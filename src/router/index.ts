@@ -188,6 +188,26 @@ export const asyncRoutes: RouteRecordRaw[] = [
     ]
   },
   {
+    path: '/excel',
+    redirect: '/excel/custom-export',
+    component: Layout,
+    meta: { icon: 'excel', title: 'Excel' },
+    children: [
+      {
+        path: 'custom-export',
+        name: 'CustomExport',
+        component: () => import('@/views/excel/customExport.vue'),
+        meta: { title: '导出表格' }
+      },
+      {
+        path: 'upload-excel',
+        name: 'UploadExcel',
+        component: () => import('@/views/excel/uploadExcel.vue'),
+        meta: { title: '上传 Excel' }
+      }
+    ]
+  },
+  {
     path: '/tabs',
     redirect: '/components/index',
     component: Layout,

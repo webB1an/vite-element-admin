@@ -1,4 +1,8 @@
 <template>
+  <custom-tip class="mb20" type="primary">
+    项目部分动态数据来自
+    <a href="https://mockapi.io/" type="primary">mockapi.io</a>
+  </custom-tip>
   <el-card>
     <template #header>
       <div class="card-header">

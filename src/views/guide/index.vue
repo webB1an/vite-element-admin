@@ -1,5 +1,8 @@
 <template>
-  <el-alert title="对新手进行操作引导" type="info" :closable="false" />
+  <custom-tip type="primary">
+    对新手进行引导，功能基于
+    <a href="https://github.com/kamranahmedse/driver.js" type="primary">CodeMirror</a>
+  </custom-tip>
 
   <el-button class="mt20" type="primary" @click.prevent.stop="guide">开始引导</el-button>
 </template>

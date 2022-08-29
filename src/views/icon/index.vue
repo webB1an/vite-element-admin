@@ -1,5 +1,5 @@
 <template>
-  <el-alert title="使用 import.meta.globEager 实现" type="success" :closable="false" />
+  <custom-tip type="primary"> 使用 import.meta.globEager 实现 </custom-tip>
 
   <el-card class="mt20">
     <el-row>

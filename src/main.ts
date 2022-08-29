@@ -12,6 +12,7 @@ import 'normalize.css/normalize.css'
 import 'element-plus/dist/index.css'
 
 import SvgIcon from '@/components/SvgIcon.vue'
+import CustomTip from '@/components/CustomTip/index.vue'
 
 import loading from '@/components/Loading/index'
 
@@ -19,6 +20,7 @@ const app = createApp(App)
 const pinia = createPinia()
 
 app.component('SvgIcon', SvgIcon)
+app.component('CustomTip', CustomTip)
 
 app.use(ElementPlus)
 app.use(pinia)

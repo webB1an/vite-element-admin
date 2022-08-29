@@ -1,4 +1,8 @@
 <template>
+  <custom-tip class="mb20" type="primary">
+    功能基于 Sheetjs 实现，更多详见
+    <a href="https://docs.sheetjs.com/docs/demos/vue/" type="primary">文档</a>
+  </custom-tip>
   <el-card>
     <el-form :inline="true" :model="form">
       <el-form-item label="文件名称">

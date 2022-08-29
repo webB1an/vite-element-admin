@@ -26,7 +26,6 @@ import { ref, unref } from 'vue'
 import { ElMessage } from 'element-plus'
 
 import JsonEditor from '@/components/JsonEditor/index.vue'
-import CustomTip from '@/components/CustomTip/index.vue'
 
 const json = ref(`{
   "name": "vite-element-admin"

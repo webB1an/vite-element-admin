@@ -106,6 +106,26 @@ export const asyncRoutes: RouteRecordRaw[] = [
     ]
   },
   {
+    path: '/charts',
+    redirect: '/charts/line',
+    component: Layout,
+    meta: { icon: 'charts', title: '图表' },
+    children: [
+      {
+        path: 'line',
+        name: 'LineChart',
+        component: () => import('@/views/charts/line.vue'),
+        meta: { title: '折线图' }
+      },
+      {
+        path: 'pie',
+        name: 'PieChart',
+        component: () => import('@/views/charts/pie.vue'),
+        meta: { title: '饼图' }
+      }
+    ]
+  },
+  {
     path: '/nested',
     redirect: '/nested/menu1',
     component: Layout,

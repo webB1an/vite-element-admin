@@ -52,6 +52,12 @@
   />
 </template>
 
+<script lang="ts">
+export default {
+  name: 'InlineEditTable'
+}
+</script>
+
 <script lang="ts" setup>
 import { ref } from 'vue'
 import { ElMessage } from 'element-plus'

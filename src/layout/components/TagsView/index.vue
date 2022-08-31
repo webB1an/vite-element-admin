@@ -1,9 +1,10 @@
 <template>
-  <el-scrollbar>
-    <div id="tags-view-container" class="tags-view-container">
-      <div
+  <div id="tags-view-container" class="tags-view-container" ref="tagsViewRef">
+    <el-scrollbar class="tags-view-scroll" ref="scrollbarRef">
+      <span
+        ref="tag"
         v-for="item in visitedViews"
-        @click="toLink(item)"
+        @click="toLink($event, item)"
         @contextmenu.prevent="openMenu(item, $event)"
         :key="item.path"
         :class="{ 'tags-view-active': item.path === route.path }"
@@ -13,10 +14,9 @@
         <span v-if="!isAffix(item)" @click.stop="closeSelectedTag(item)" class="tags-view-close">
           ×
         </span>
-      </div>
-    </div>
-  </el-scrollbar>
-
+      </span>
+    </el-scrollbar>
+  </div>
   <Teleport to="body">
     <ul class="contextmenu" v-show="visible" :style="{ left: left + 'px', top: top + 'px' }">
       <li @click="refreshSelectedTag(selectedTag)">刷新</li>
@@ -28,15 +28,21 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, watch, nextTick } from 'vue'
+import { ref, unref, watch, nextTick } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { storeToRefs } from 'pinia'
 import { cloneDeep } from 'lodash-es'
 import path from 'path-browserify'
+import { ElScrollbar } from 'element-plus'
 import tagsView from '@/store/tagsView'
 import { asyncRoutes } from '@/router/index'
 // import type { RouteRecordRaw } from 'vue-router'
 import type { RouteRecordRaw, RouteLocationNormalizedLoaded } from 'vue-router'
+
+const scrollbarRef = ref<InstanceType<typeof ElScrollbar>>()
+
+const tagsViewRef = ref<HTMLElement | null>(null)
+const tag = ref<HTMLElement[] | null>(null)
 
 const route = useRoute()
 const router = useRouter()
@@ -50,7 +56,10 @@ const top = ref(0)
 const affix = ref<RouteLocationNormalizedLoaded[]>([])
 const selectedTag = ref<RouteLocationNormalizedLoaded>({} as RouteLocationNormalizedLoaded)
 
-const toLink = (tag: RouteLocationNormalizedLoaded) => router.push({ path: tag.path })
+const toLink = (e: MouseEvent, tag: RouteLocationNormalizedLoaded) => {
+  console.log('eee', e)
+  router.push({ path: tag.path })
+}
 
 const isAffix = (tag: RouteLocationNormalizedLoaded) => !!tag.meta?.affix
 
@@ -146,6 +155,7 @@ const closeSelectedTag = (tag: RouteLocationNormalizedLoaded) => {
     if (isActiveTag(tag)) {
       toLastVisitedView(visitedViews)
     }
+    moveToTarget()
   })
 }
 
@@ -165,12 +175,53 @@ const closeAllTags = (tag: RouteLocationNormalizedLoaded) => {
   })
 }
 
+const toTarget = (act: HTMLElement) => {
+  const container = unref(tagsViewRef)
+  const scrollbar = unref(scrollbarRef)
+
+  if (!container || !scrollbar) return
+  // tagsView 宽度
+  const containerW = container.offsetWidth
+  // 活跃 tag 相较于父集的距离
+  const actL = act.offsetLeft
+  // 活跃 tag 宽度
+  const actW = act.offsetWidth
+  // siderW
+  const siderW = container.offsetLeft
+
+  // 活跃 tag 距离最左边距离
+  const actToLeft = act.getBoundingClientRect().x
+
+  // 活跃 tag 在可视区域
+  if (actToLeft < siderW + containerW && actToLeft >= siderW) return
+  // 活跃 tag 在左边不可视区域
+  if (actToLeft <= siderW) {
+    scrollbar.setScrollLeft(0)
+  } else if (actL >= containerW) {
+    // 活跃 tag 在右边不可视区域
+    scrollbar.setScrollLeft(actL - containerW + actW)
+  }
+}
+
+const moveToTarget = () => {
+  nextTick(() => {
+    const tags = unref(tag)
+    if (!tags || tags.length === 0) return
+    for (const t of tags) {
+      if (t.className.includes('tags-view-active')) {
+        toTarget(t)
+      }
+    }
+  })
+}
+
 initTags()
 
 watch(
   route,
   () => {
     addView()
+    moveToTarget()
   },
   {
     immediate: true
@@ -187,22 +238,30 @@ watch(visible, (value) => {
 </script>
 
 <style lang="scss" scoped>
+.tags-view-scroll {
+  background-color: #fff;
+}
+
 .tags-view-container {
-  display: flex;
-  align-items: center;
+  // display: flex;
+  // align-items: center;
+  width: 100%;
   height: 32px;
   border-bottom: 1px solid #eee;
   border-top: 1px solid #eee;
   background-color: #fff;
+  overflow-y: scroll;
+  white-space: nowrap;
 
   .tags-view {
-    flex-shrink: 0;
-    display: flex;
+    // flex-shrink: 0;
+    // display: flex;
+    display: inline-block;
     align-items: center;
     height: 26px;
     padding: 0 8px;
     font-size: 12px;
-    line-height: 28px;
+    line-height: 26px;
     margin-left: 6px;
     border: 1px solid #d9d9d9;
     cursor: pointer;
@@ -221,6 +280,7 @@ watch(visible, (value) => {
     }
 
     &-close {
+      display: inline-block;
       width: 10px;
       height: 10px;
       font-size: 12px;

@@ -279,7 +279,7 @@ export const asyncRoutes: RouteRecordRaw[] = [
         path: 'index',
         name: 'Clipboard',
         component: () => import('@/views/clipboard/index.vue'),
-        meta: { icon: 'copy', title: 'Clipboard' }
+        meta: { icon: 'copy', title: 'Clipboard', affix: true }
       }
     ]
   },

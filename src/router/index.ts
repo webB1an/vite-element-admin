@@ -271,6 +271,19 @@ export const asyncRoutes: RouteRecordRaw[] = [
     ]
   },
   {
+    path: '/websocket',
+    redirect: '/websocket/index',
+    component: Layout,
+    children: [
+      {
+        path: 'index',
+        name: 'Websocket',
+        component: () => import('@/views/websocket/index.vue'),
+        meta: { icon: 'websocket', title: 'Websocket' }
+      }
+    ]
+  },
+  {
     path: '/clipboard',
     redirect: '/clipboard/index',
     component: Layout,
@@ -279,7 +292,7 @@ export const asyncRoutes: RouteRecordRaw[] = [
         path: 'index',
         name: 'Clipboard',
         component: () => import('@/views/clipboard/index.vue'),
-        meta: { icon: 'copy', title: 'Clipboard', affix: true }
+        meta: { icon: 'copy', title: 'Clipboard' }
       }
     ]
   },

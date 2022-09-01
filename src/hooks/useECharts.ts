@@ -1,5 +1,5 @@
 import { unref, Ref } from 'vue'
-import { tryOnUnmounted, useResizeObserver } from '@vueuse/core'
+import { tryOnUnmounted, useResizeObserver, useDebounceFn } from '@vueuse/core'
 
 import echarts from '@/utils/echarts'
 
@@ -7,7 +7,9 @@ export function useECharts(elRef: Ref<HTMLDivElement>) {
   let chartInstance: echarts.ECharts | null = null
 
   useResizeObserver(document.body, () => {
-    resize()
+    useDebounceFn(() => {
+      resize()
+    }, 200)
   })
 
   function initChart() {

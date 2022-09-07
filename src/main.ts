@@ -10,6 +10,9 @@ import router from './router'
 import '@/style/reset.css'
 import 'normalize.css/normalize.css'
 import 'element-plus/dist/index.css'
+import 'element-plus/theme-chalk/dark/css-vars.css'
+
+import '@/style/theme.scss'
 
 import SvgIcon from '@/components/SvgIcon.vue'
 import CustomTip from '@/components/CustomTip/index.vue'

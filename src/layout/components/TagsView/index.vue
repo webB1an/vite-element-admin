@@ -239,7 +239,7 @@ watch(visible, (value) => {
 
 <style lang="scss" scoped>
 .tags-view-scroll {
-  background-color: #fff;
+  // background-color: #fff;
 }
 
 .tags-view-container {
@@ -247,9 +247,10 @@ watch(visible, (value) => {
   // align-items: center;
   width: 100%;
   height: 32px;
-  border-bottom: 1px solid #eee;
-  border-top: 1px solid #eee;
-  background-color: #fff;
+  padding: 2px 0;
+  border-bottom: 1px solid var(--custom-tag-view-container-border-color);
+  border-top: 1px solid var(--custom-tag-view-container-border-color);
+  background-color: var(--custom-tag-view-bg-color);
   overflow-y: scroll;
   white-space: nowrap;
 
@@ -260,10 +261,10 @@ watch(visible, (value) => {
     align-items: center;
     height: 26px;
     padding: 0 8px;
+    margin-left: 6px;
     font-size: 12px;
     line-height: 26px;
-    margin-left: 6px;
-    border: 1px solid #d9d9d9;
+    border: 1px solid var(--custom-tag-view-border-color);
     cursor: pointer;
 
     &:hover {
@@ -294,19 +295,20 @@ watch(visible, (value) => {
 .contextmenu {
   position: absolute;
   width: 80px;
-  font-size: 12px;
   padding: 6px 0;
+  font-size: 12px;
   border-radius: 4px;
-  list-style-type: none;
   background-color: #fff;
   box-shadow: 2px 2px 3px 0 rgb(0 0 0 / 30%);
+  list-style-type: none;
   z-index: 999;
 
   li {
-    cursor: pointer;
-    padding-left: 10px;
     height: 24px;
+    padding-left: 10px;
     line-height: 24px;
+    color: var(--custom-contextmenu-text-color);
+    cursor: pointer;
 
     &:hover {
       background-color: #efefef;

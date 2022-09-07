@@ -1,5 +1,9 @@
 <template>
-  <el-row :gutter="20">
+  <custom-tip>
+    Websocket 链接白嫖于
+    <a href="https://www.piesocket.com/websocket-tester# ">piesocket</a>，若链接失效可重新替换
+  </custom-tip>
+  <el-row class="mt20" :gutter="20">
     <el-col :span="8">
       <el-card>
         <div class="title">

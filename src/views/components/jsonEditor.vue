@@ -17,15 +17,17 @@
         <el-button @click="getJSON" class="button" type="primary">获取 JSON</el-button>
       </div>
     </template>
-    <json-editor v-model="json" :height="400" />
+    <json-editor v-model="json" :height="400" :theme="appStore.isDarkTheme ? 'dark' : ''" />
   </el-card>
 </template>
 
 <script lang="ts" setup>
 import { ref, unref } from 'vue'
 import { ElMessage } from 'element-plus'
-
+import app from '@/store/app'
 import JsonEditor from '@/components/JsonEditor/index.vue'
+
+const appStore = app()
 
 const json = ref(`{
   "name": "vite-element-admin"

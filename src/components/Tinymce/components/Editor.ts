@@ -45,7 +45,7 @@ export const Editor = defineComponent({
   props: editorProps,
   setup: (props: IPropTypes, ctx) => {
     let conf = props.init ? { ...props.init } : {}
-    const { disabled, modelValue, tagName } = toRefs(props)
+    const { disabled, modelValue, tagName, theme } = toRefs(props)
     const element: Ref<Element | null> = ref(null)
     let vueEditor: any = null
     const elementId: string = props.id || uuid('tiny-vue')
@@ -66,6 +66,8 @@ export const Editor = defineComponent({
         ...conf,
         readonly: props.disabled,
         selector: `#${elementId}`,
+        skin: props.theme ? 'oxide-dark' : 'oxide',
+        content_css: props.theme ? 'dark' : 'default',
         language: props.language || 'zh_CN',
         plugins: mergePlugins(conf.plugins, props.plugins),
         toolbar: props.toolbar || conf.toolbar,
@@ -101,6 +103,10 @@ export const Editor = defineComponent({
       }
       getTinymce()?.remove(vueEditor)
       nextTick(() => initWrapper())
+    })
+    watch(theme, () => {
+      getTinymce()?.remove(vueEditor)
+      initWrapper()
     })
     onMounted(() => {
       if (getTinymce() !== null) {

@@ -5,11 +5,15 @@
   >
     <side-bar />
     <div class="main-container">
-      <navbar />
-      <tags-view />
+      <navbar v-if="appStore.navbarStatus" />
+      <tags-view v-if="appStore.tagViewStatus" />
       <app-main />
     </div>
   </div>
+
+  <teleport to="body">
+    <setting />
+  </teleport>
 </template>
 
 <script setup lang="ts">
@@ -19,6 +23,7 @@ import SideBar from '@/layout/components/SideBar/index.vue'
 import Navbar from './components/Navbar/index.vue'
 import TagsView from './components/TagsView/index.vue'
 import AppMain from '@/layout/components/AppMain.vue'
+import Setting from './components/Setting/index.vue'
 
 const appStore = app()
 const openSiderbar = computed(() => appStore.siderbar.active)
@@ -31,10 +36,10 @@ const hideSiderbar = computed(() => !appStore.siderbar.active)
 .app-warpper {
   width: 100%;
   height: 100%;
-  background-color: #e9ebf0;
+  background-color: var(--custom-bg-color);
 
   .main-container {
-    background-color: #e9ebf0;
+    background-color: var(--custom-bg-color);
     margin-left: $sideWidth;
     transition: margin-left $sideTransitionTime;
   }

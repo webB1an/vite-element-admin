@@ -9,6 +9,7 @@
     :plugins="plugins"
     language="zh-Hans"
     :tinymce-script-src="TinymceScriptSrc"
+    :theme="appStore.isDarkTheme ? 'dark' : ''"
   />
   <el-card class="rich-text mt20">
     <!-- eslint-disable-next-line vue/no-v-html -->
@@ -28,6 +29,9 @@ import path from 'path-browserify'
 import Editor from '@/components/Tinymce/index'
 import toolbar from './toolbar'
 import plugins from './plugins'
+import app from '@/store/app'
+
+const appStore = app()
 
 const TinymceScriptSrc = ref(
   path.join(import.meta.env.VITE_APP_PUBLIC_URL, '/tinymce/tinymce.min.js')

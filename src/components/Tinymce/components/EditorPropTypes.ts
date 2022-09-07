@@ -27,6 +27,7 @@ export interface IPropTypes {
   modelValue: string
   disabled: boolean
   tinymceScriptSrc: string
+  theme: string
 }
 
 export const editorProps: CopyProps<IPropTypes> = {
@@ -44,6 +45,7 @@ export const editorProps: CopyProps<IPropTypes> = {
   modelValue: String,
   disabled: Boolean,
   tinymceScriptSrc: String,
+  theme: String,
   outputFormat: {
     type: String,
     validator: (prop: string) => prop === 'html' || prop === 'text'

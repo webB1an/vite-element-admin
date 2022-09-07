@@ -1,5 +1,5 @@
 <template>
-  <div id="hamburger-container" class="hamburger-container">
+  <div id="hamburger-container" class="hamburger-container" @click="toggle">
     <svg
       :class="{ active: siderbar.active }"
       class="hamburger"
@@ -10,12 +10,10 @@
       p-id="5096"
       width="128"
       height="128"
-      @click="toggle"
     >
-      <!-- eslint-disable-next-line max-len -->
       <path
-        d="M908.70574649 831.22148693H134.16925867v-52.07344924h774.54813867v52.07344924zM531.80092872 442.96292125H130.86041885V390.889472h400.94050987zM531.80092872 634.17075485H130.86041885v-52.05597298h400.94050987zM901.4996992 245.91801458H126.9690368v-52.06762383h774.54231325v52.06762383zM669.95081672 518.02348658l225.4205383-150.2609408v300.53353244z"
-        p-id="5097"
+        d="M616 582l-480 0a8 8 0 0 0-8 8l0 55.99999999a8 8 0 0 0 8 8.00000001L616 654a8 8 0 0 0 8-8l0-56a8 8 0 0 0-8-8z m8-204a8 8 0 0 0-8-8l-480 0a8 8 0 0 0-8 8.00000001l0 55.99999999a8 8 0 0 0 8 8L616 442a8 8 0 0 0 8-8l0-56z m-504 486L904 864a8 8 0 0 0 8-8l0-56a8 8 0 0 0-8-8l-784 0a8 8 0 0 0-8 8l0 56a8 8 0 0 0 8 8z m0-632L904 232a8 8 0 0 0 8-8l0-56a8 8 0 0 0-8-8l-784 0a8 8 0 0 0-8 8l0 56a8 8 0 0 0 8 8zM881.6 381.9L725.3 505a8.8 8.8 0 0 0 0 13.9L881.6 642.1a8.9 8.9 0 0 0 14.4-6.9l0-246.3a8.9 8.9 0 0 0-14.4-7z"
+        p-id="1408"
       />
     </svg>
   </div>
@@ -35,19 +33,24 @@ const toggle = () => appStore.toggleSidebar()
 @import '@/style/variable.scss';
 
 .hamburger-container {
+  float: left;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: $navbarHeight;
   height: $navbarHeight;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  float: left;
   cursor: pointer;
+
+  &:hover {
+    background-color: var(---custom-icon-hover-color);
+  }
 
   .hamburger {
     width: 20px;
     height: 20px;
-    color: blue;
     transform: rotate(180deg);
+    color: var(--custom-icon-color);
+    fill: currentColor;
 
     &.active {
       transform: rotate(0);

@@ -35,6 +35,7 @@ watch(
 .breadcrumb-container {
   float: left;
   height: $navbarHeight;
+  margin-left: 6px;
   line-height: $navbarHeight;
 }
 </style>

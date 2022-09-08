@@ -57,7 +57,6 @@ const affix = ref<RouteLocationNormalizedLoaded[]>([])
 const selectedTag = ref<RouteLocationNormalizedLoaded>({} as RouteLocationNormalizedLoaded)
 
 const toLink = (e: MouseEvent, tag: RouteLocationNormalizedLoaded) => {
-  console.log('eee', e)
   router.push({ path: tag.path })
 }
 

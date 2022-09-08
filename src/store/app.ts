@@ -37,7 +37,6 @@ export default defineStore('app', {
       setBooleanStorage('settingStatus', this.settingStatus)
     },
     toggleSidebar() {
-      console.log('---------------11111---------------')
       this.siderbar.active = !this.siderbar.active
       setBooleanStorage('siderbarStatus', this.siderbar.active)
     },

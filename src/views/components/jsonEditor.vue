@@ -22,7 +22,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, unref } from 'vue'
+import { ref } from 'vue'
 import { ElMessage } from 'element-plus'
 import app from '@/store/app'
 import JsonEditor from '@/components/JsonEditor/index.vue'
@@ -34,7 +34,6 @@ const json = ref(`{
 }`)
 
 const getJSON = () => {
-  console.log(unref(json))
   ElMessage.success('获取成功，请在控制台查看！')
 }
 </script>

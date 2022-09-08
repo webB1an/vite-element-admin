@@ -124,8 +124,6 @@ export const Editor = defineComponent({
     })
     onBeforeUnmount(() => {
       if (getTinymce() !== null) {
-        console.log('vueEditor', vueEditor)
-        console.log('getTinymce()', getTinymce())
         nextTick(() => {
           getTinymce().remove(vueEditor)
         })

@@ -27,7 +27,6 @@ const store = createStore({
   },
   actions: {
     TestActionCommit({ commit }, data: number) {
-      console.log('---------------dispatch TestActionCommit---------------')
       return new Promise((resolve) => {
         setTimeout(() => {
           commit('ADD', data)
@@ -36,7 +35,6 @@ const store = createStore({
       })
     },
     TestActionDispatch({ dispatch }, data: number) {
-      console.log('---------------TestActionDispatch dispatch TestActionCommit---------------')
       dispatch('TestActionCommit', data)
     }
   }

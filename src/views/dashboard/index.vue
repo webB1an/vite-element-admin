@@ -1,69 +1,71 @@
 <template>
-  <el-row class="todo-overview" :gutter="20">
-    <el-col :span="6">
-      <div class="todo-overview-wapper">
-        <div class="todo-overview-icon todo-icon-overview">
-          <svg-icon svg-class="el-icon" name="svg-todo-overview" />
+  <div class="app-container">
+    <el-row class="todo-overview" :gutter="20">
+      <el-col :span="6">
+        <div class="todo-overview-wapper">
+          <div class="todo-overview-icon todo-icon-overview">
+            <svg-icon svg-class="el-icon" name="svg-todo-overview" />
+          </div>
+          <div class="todo-overview-description">
+            <div class="todo-overview-text">总计</div>
+            <div class="todo-overview-num">{{ all }}</div>
+          </div>
         </div>
-        <div class="todo-overview-description">
-          <div class="todo-overview-text">总计</div>
-          <div class="todo-overview-num">{{ all }}</div>
+      </el-col>
+      <el-col :span="6">
+        <div class="todo-overview-wapper">
+          <div class="todo-overview-icon todo-icon-wait">
+            <svg-icon svg-class="el-icon" name="svg-todo-wait" />
+          </div>
+          <div class="todo-overview-description">
+            <div class="todo-overview-text">待做</div>
+            <div class="todo-overview-num">{{ incomplete.length }}</div>
+          </div>
         </div>
-      </div>
-    </el-col>
-    <el-col :span="6">
-      <div class="todo-overview-wapper">
-        <div class="todo-overview-icon todo-icon-wait">
-          <svg-icon svg-class="el-icon" name="svg-todo-wait" />
+      </el-col>
+      <el-col :span="6">
+        <div class="todo-overview-wapper">
+          <div class="todo-overview-icon todo-icon-over">
+            <svg-icon svg-class="el-icon" name="svg-todo-over" />
+          </div>
+          <div class="todo-overview-description">
+            <div class="todo-overview-text">完成</div>
+            <div class="todo-overview-num">{{ over }}</div>
+          </div>
         </div>
-        <div class="todo-overview-description">
-          <div class="todo-overview-text">待做</div>
-          <div class="todo-overview-num">{{ incomplete.length }}</div>
+      </el-col>
+      <el-col :span="6">
+        <div class="todo-overview-wapper">
+          <div class="todo-overview-icon todo-icon-del">
+            <svg-icon svg-class="el-icon" name="svg-todo-del" />
+          </div>
+          <div class="todo-overview-description">
+            <div class="todo-overview-text">删除</div>
+            <div class="todo-overview-num">{{ del }}</div>
+          </div>
         </div>
-      </div>
-    </el-col>
-    <el-col :span="6">
-      <div class="todo-overview-wapper">
-        <div class="todo-overview-icon todo-icon-over">
-          <svg-icon svg-class="el-icon" name="svg-todo-over" />
-        </div>
-        <div class="todo-overview-description">
-          <div class="todo-overview-text">完成</div>
-          <div class="todo-overview-num">{{ over }}</div>
-        </div>
-      </div>
-    </el-col>
-    <el-col :span="6">
-      <div class="todo-overview-wapper">
-        <div class="todo-overview-icon todo-icon-del">
-          <svg-icon svg-class="el-icon" name="svg-todo-del" />
-        </div>
-        <div class="todo-overview-description">
-          <div class="todo-overview-text">删除</div>
-          <div class="todo-overview-num">{{ del }}</div>
-        </div>
-      </div>
-    </el-col>
-  </el-row>
+      </el-col>
+    </el-row>
 
-  <el-row class="mt20" :gutter="20">
-    <todo />
-    <el-col :span="12">
-      <el-card>
-        <el-table :data="tableData">
-          <el-table-column prop="orderNo" label="ID" width="400px" />
-          <el-table-column prop="num" label="数量" />
-          <el-table-column label="状态">
-            <template #default="scope">
-              <el-tag :type="scope.row.status === 'success' ? scope.row.status : 'warning'">
-                {{ scope.row.status }}
-              </el-tag>
-            </template>
-          </el-table-column>
-        </el-table>
-      </el-card>
-    </el-col>
-  </el-row>
+    <el-row class="mt20" :gutter="20">
+      <todo />
+      <el-col :span="12">
+        <el-card>
+          <el-table :data="tableData">
+            <el-table-column prop="orderNo" label="ID" width="400px" />
+            <el-table-column prop="num" label="数量" />
+            <el-table-column label="状态">
+              <template #default="scope">
+                <el-tag :type="scope.row.status === 'success' ? scope.row.status : 'warning'">
+                  {{ scope.row.status }}
+                </el-tag>
+              </template>
+            </el-table-column>
+          </el-table>
+        </el-card>
+      </el-col>
+    </el-row>
+  </div>
 </template>
 
 <script lang="ts" setup>

@@ -1,13 +1,15 @@
 <template>
-  <el-tag>mountend Times: {{ createTimes }}</el-tag>
+  <div class="app-container">
+    <el-tag>mountend Times: {{ createTimes }}</el-tag>
 
-  <el-tabs class="mt20" type="border-card" v-model="activeName">
-    <el-tab-pane v-for="opt in tabsOpts" :label="opt.label" :name="opt.key" :key="opt.key">
-      <keep-alive>
-        <tab-pane v-if="activeName === opt.key" @create="showCreatedTimes" />
-      </keep-alive>
-    </el-tab-pane>
-  </el-tabs>
+    <el-tabs class="mt20" type="border-card" v-model="activeName">
+      <el-tab-pane v-for="opt in tabsOpts" :label="opt.label" :name="opt.key" :key="opt.key">
+        <keep-alive>
+          <tab-pane v-if="activeName === opt.key" @create="showCreatedTimes" />
+        </keep-alive>
+      </el-tab-pane>
+    </el-tabs>
+  </div>
 </template>
 
 <script lang="ts" setup>

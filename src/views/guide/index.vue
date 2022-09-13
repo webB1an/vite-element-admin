@@ -1,10 +1,12 @@
 <template>
-  <custom-tip type="primary">
-    对新手进行引导，功能基于
-    <a href="https://github.com/kamranahmedse/driver.js" type="primary">driver.js</a>
-  </custom-tip>
+  <div class="app-container">
+    <custom-tip type="primary">
+      对新手进行引导，功能基于
+      <a href="https://github.com/kamranahmedse/driver.js" type="primary">driver.js</a>
+    </custom-tip>
 
-  <el-button class="mt20" type="primary" @click.prevent.stop="guide">开始引导</el-button>
+    <el-button class="mt20" type="primary" @click.prevent.stop="guide">开始引导</el-button>
+  </div>
 </template>
 
 <script lang="ts" setup>

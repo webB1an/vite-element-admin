@@ -1,63 +1,65 @@
 <template>
-  <custom-tip>
-    Websocket 链接白嫖于
-    <a href="https://www.piesocket.com/websocket-tester# ">piesocket</a>，若链接失效可重新替换
-  </custom-tip>
-  <el-row class="mt20" :gutter="20">
-    <el-col :span="8">
-      <el-card>
-        <div class="title">
-          连接状态：
-          <el-tag v-if="status === 'CONNECTING'">CONNECTING</el-tag>
-          <el-tag v-if="status === 'OPEN'" type="success">OPEN</el-tag>
-          <el-tag v-if="status === 'CLOSED'" type="info">CLOSED</el-tag>
-        </div>
+  <div class="app-container">
+    <custom-tip>
+      Websocket 链接白嫖于
+      <a href="https://www.piesocket.com/websocket-tester# ">piesocket</a>，若链接失效可重新替换
+    </custom-tip>
+    <el-row class="mt20" :gutter="20">
+      <el-col :span="8">
+        <el-card>
+          <div class="title">
+            连接状态：
+            <el-tag v-if="status === 'CONNECTING'">CONNECTING</el-tag>
+            <el-tag v-if="status === 'OPEN'" type="success">OPEN</el-tag>
+            <el-tag v-if="status === 'CLOSED'" type="info">CLOSED</el-tag>
+          </div>
 
-        <el-divider />
+          <el-divider />
 
-        <el-input
-          v-model="wss"
-          placeholder="输入服务地址"
-          :disabled="status === 'CONNECTING' || status === 'OPEN'"
-        >
-          <template #prepend>服务地址</template>
-          <template #append>
-            <el-button v-if="status === 'CLOSED'" @click="openWSS"> 开启连接 </el-button>
-            <el-button v-if="status === 'CONNECTING' || status === 'OPEN'" @click="closeWss">
-              关闭连接
-            </el-button>
-          </template>
-        </el-input>
+          <el-input
+            v-model="wss"
+            placeholder="输入服务地址"
+            :disabled="status === 'CONNECTING' || status === 'OPEN'"
+          >
+            <template #prepend>服务地址</template>
+            <template #append>
+              <el-button v-if="status === 'CLOSED'" @click="openWSS"> 开启连接 </el-button>
+              <el-button v-if="status === 'CONNECTING' || status === 'OPEN'" @click="closeWss">
+                关闭连接
+              </el-button>
+            </template>
+          </el-input>
 
-        <div class="title" style="padding-top: var(--el-card-padding)">设置</div>
-        <el-divider />
+          <div class="title" style="padding-top: var(--el-card-padding)">设置</div>
+          <el-divider />
 
-        <el-input
-          v-model="msg"
-          :autosize="{ minRows: 2 }"
-          type="textarea"
-          placeholder="需要发送到服务器的内容"
-        />
-        <el-button
-          :disabled="status === 'CLOSED'"
-          @click="sendWss"
-          class="mt20"
-          type="primary"
-          style="width: 100%"
-        >
-          发送
-        </el-button>
-      </el-card>
-    </el-col>
-    <el-col :span="16">
-      <el-card style="height: 332px">
-        <div class="title">消息记录：</div>
-        <el-divider />
-        <!-- eslint-disable-next-line vue/no-v-html -->
-        <div v-html="content" style="height: 224px; overflow-y: scroll"></div>
-      </el-card>
-    </el-col>
-  </el-row>
+          <el-input
+            v-model="msg"
+            :autosize="{ minRows: 2 }"
+            type="textarea"
+            placeholder="需要发送到服务器的内容"
+          />
+          <el-button
+            :disabled="status === 'CLOSED'"
+            @click="sendWss"
+            class="mt20"
+            type="primary"
+            style="width: 100%"
+          >
+            发送
+          </el-button>
+        </el-card>
+      </el-col>
+      <el-col :span="16">
+        <el-card style="height: 332px">
+          <div class="title">消息记录：</div>
+          <el-divider />
+          <!-- eslint-disable-next-line vue/no-v-html -->
+          <div v-html="content" style="height: 224px; overflow-y: scroll"></div>
+        </el-card>
+      </el-col>
+    </el-row>
+  </div>
 </template>
 
 <script lang="ts" setup>

@@ -3,11 +3,7 @@
     <router-view v-slot="{ Component }">
       <keep-alive :include="cachedViews">
         <transition name="fade-transform" mode="out-in">
-          <!-- div to fix transition error, detail see: -->
-          <!-- https://stackoverflow.com/questions/65553121/vue-3-transition-renders-non-element-root-node-that-cannot-be-animated -->
-          <div :key="key" :class="key">
-            <component :is="Component" :key="key" />
-          </div>
+          <component :is="Component" :key="key" />
         </transition>
       </keep-alive>
     </router-view>

@@ -1,20 +1,22 @@
 <template>
-  <custom-tip class="mb20" type="primary">
-    富文本编辑器，Demo 基于官方项目简单改造，免去 api-key 环节，更多详情见
-    <a href="https://www.tiny.cloud/docs/tinymce/6/" type="primary">文档</a>
-  </custom-tip>
-  <editor
-    v-model="content"
-    :toolbar="toolbar"
-    :plugins="plugins"
-    language="zh-Hans"
-    :tinymce-script-src="TinymceScriptSrc"
-    :theme="appStore.isDarkTheme ? 'dark' : ''"
-  />
-  <el-card class="rich-text mt20">
-    <!-- eslint-disable-next-line vue/no-v-html -->
-    <div v-html="content"></div>
-  </el-card>
+  <div class="app-container">
+    <custom-tip class="mb20" type="primary">
+      富文本编辑器，Demo 基于官方项目简单改造，免去 api-key 环节，更多详情见
+      <a href="https://www.tiny.cloud/docs/tinymce/6/" type="primary">文档</a>
+    </custom-tip>
+    <editor
+      v-model="content"
+      :toolbar="toolbar"
+      :plugins="plugins"
+      language="zh-Hans"
+      :tinymce-script-src="TinymceScriptSrc"
+      :theme="appStore.isDarkTheme ? 'dark' : ''"
+    />
+    <el-card class="rich-text mt20">
+      <!-- eslint-disable-next-line vue/no-v-html -->
+      <div v-html="content"></div>
+    </el-card>
+  </div>
 </template>
 
 <script lang="ts">

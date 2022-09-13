@@ -9,11 +9,11 @@
       <tags-view v-if="appStore.tagViewStatus" />
       <app-main />
     </div>
-  </div>
 
-  <teleport to="body">
-    <setting />
-  </teleport>
+    <teleport to="body">
+      <setting />
+    </teleport>
+  </div>
 </template>
 
 <script setup lang="ts">

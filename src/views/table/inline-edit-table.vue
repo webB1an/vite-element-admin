@@ -1,55 +1,59 @@
 <template>
-  <el-table ref="inlineEditTable" :data="tableData" row-key="id" border style="width: 100%">
-    <el-table-column align="center" prop="id" label="id" width="50" />
-    <el-table-column
-      class-name="avatar-column"
-      align="center"
-      prop="avatar"
-      label="avatar"
-      width="70"
-    >
-      <template #default="scope">
-        <el-avatar :src="scope.row.avatar" />
-      </template>
-    </el-table-column>
-    <el-table-column align="center" prop="name" label="name" />
+  <div class="app-container">
+    <el-table ref="inlineEditTable" :data="tableData" row-key="id" border style="width: 100%">
+      <el-table-column align="center" prop="id" label="id" width="50" />
+      <el-table-column
+        class-name="avatar-column"
+        align="center"
+        prop="avatar"
+        label="avatar"
+        width="70"
+      >
+        <template #default="scope">
+          <el-avatar :src="scope.row.avatar" />
+        </template>
+      </el-table-column>
+      <el-table-column align="center" prop="name" label="name" />
 
-    <el-table-column align="center" prop="account" label="account" width="400">
-      <template #default="scope">
-        <span v-if="!scope.row.editor">
-          {{ scope.row.account }}
-        </span>
-        <el-row justify="space-around" v-else>
-          <el-col :span="16">
-            <el-input v-model="scope.row.account" />
-          </el-col>
-          <el-col :span="4">
-            <el-button class="fr" type="primary" @click="cancelEditor(scope.row)"> 取消 </el-button>
-          </el-col>
-        </el-row>
-      </template>
-    </el-table-column>
-    <el-table-column align="center" prop="phone" label="phone" />
-    <el-table-column width="250" align="center" prop="email" label="email" />
-    <el-table-column align="center" prop="city" label="city" />
-    <el-table-column width="100" align="center" label="action">
-      <template #default="scope">
-        <el-button v-if="!scope.row.editor" type="primary" @click="editor(scope.row)">
-          编辑
-        </el-button>
-        <el-button v-else type="primary" @click="confirmEditor(scope.row)">确认</el-button>
-      </template>
-    </el-table-column>
-  </el-table>
+      <el-table-column align="center" prop="account" label="account" width="400">
+        <template #default="scope">
+          <span v-if="!scope.row.editor">
+            {{ scope.row.account }}
+          </span>
+          <el-row justify="space-around" v-else>
+            <el-col :span="16">
+              <el-input v-model="scope.row.account" />
+            </el-col>
+            <el-col :span="4">
+              <el-button class="fr" type="primary" @click="cancelEditor(scope.row)">
+                取消
+              </el-button>
+            </el-col>
+          </el-row>
+        </template>
+      </el-table-column>
+      <el-table-column align="center" prop="phone" label="phone" />
+      <el-table-column width="250" align="center" prop="email" label="email" />
+      <el-table-column align="center" prop="city" label="city" />
+      <el-table-column width="100" align="center" label="action">
+        <template #default="scope">
+          <el-button v-if="!scope.row.editor" type="primary" @click="editor(scope.row)">
+            编辑
+          </el-button>
+          <el-button v-else type="primary" @click="confirmEditor(scope.row)">确认</el-button>
+        </template>
+      </el-table-column>
+    </el-table>
 
-  <Pagination
-    class="mt20"
-    v-if="total > 0"
-    v-model:page="query.page"
-    v-model:limit="query.limit"
-    :total="total"
-    @pagination="handlePageChange"
-  />
+    <Pagination
+      class="mt20"
+      v-if="total > 0"
+      v-model:page="query.page"
+      v-model:limit="query.limit"
+      :total="total"
+      @pagination="handlePageChange"
+    />
+  </div>
 </template>
 
 <script lang="ts">

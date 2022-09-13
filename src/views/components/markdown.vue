@@ -1,5 +1,7 @@
 <template>
-  <markdown />
+  <div class="app-container">
+    <markdown />
+  </div>
 </template>
 
 <script lang="ts" setup>
